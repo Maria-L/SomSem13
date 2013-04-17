@@ -1,18 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/*Datum: 28.03.2013
+ *Version: 1.0
+ *Autor: Steffen Giersch
+ *       Maria Lüdemann
+ * 
+ * Beinhaltet:
+ *          Aufgabe1.java
+ *          Auto.java
  */
 package aufgabe.pkg1;
 
-/**
- *
- * @author Mooni
- */
 public class Aufgabe1 {
     // Definition der benötigten globalen Konstanten
     public final double ACC_EARTH = 9.81;
     /**
-     * @param args the command line arguments
+     * Start der Main Methode die auf die Autoklasse zu greift
      */
     public static void main(String[] args) {
       Auto auto1 = Auto.makeAuto1();
