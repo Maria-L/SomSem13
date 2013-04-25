@@ -11,7 +11,9 @@ package aufgabe.pkg1;
 
 public class Aufgabe1 {
     // Definition der benötigten globalen Konstanten
-    public final double ACC_EARTH = 9.81;
+    public final double ACC_EARTH   = 9.81;
+    public final double KM_TO_MS    = 3.6;
+    public final double W_TO_KW     = 1000;
     /**
      * Start der Main Methode die auf die Autoklasse zu greift
      */
