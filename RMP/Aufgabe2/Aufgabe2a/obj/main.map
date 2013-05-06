@@ -1,0 +1,159 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+IntCodeRAM       0x00000000         0x00040000         xr
+IntDataRAM       0x40000000         0x00004000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD .\obj\Startup.o
+LOAD .\obj\main.o
+
+.text           0x00000000      0x228
+ .\obj\Startup.o(.text)
+ .text          0x00000000      0x1c0 .\obj\Startup.o
+                0x00000058                _HardReset
+                0x00000000                _startup
+                0x000000fc                _ResetEntry
+                0x00000194                BaseStickConfig
+                0x00000058                _app_entry
+ .\obj\*(.text)
+ *(.glue_7t)
+ .glue_7t       0x000001c0        0x0 .\obj\Startup.o
+ .glue_7t       0x000001c0        0x0 .\obj\main.o
+ *(.glue_7)
+ .glue_7        0x000001c0        0x0 .\obj\Startup.o
+ .glue_7        0x000001c0        0x0 .\obj\main.o
+ .text          0x000001c0       0x68 .\obj\main.o
+                0x000001c0                main
+                0x00000228                . = ALIGN (0x4)
+
+.rodata
+ *(.rodata)
+                0x00000228                . = ALIGN (0x4)
+                0x00000228                _etext = .
+                0x00000228                PROVIDE (etext, .)
+
+.data           0x40000000        0xa load address 0x00000228
+                0x40000000                _data = .
+ *(.data)
+ .data          0x40000000        0x0 .\obj\Startup.o
+ .data          0x40000000        0xa .\obj\main.o
+                0x4000000c                . = ALIGN (0x4)
+                0x4000000c                _edata = .
+                0x4000000c                PROVIDE (edata, .)
+
+.bss            0x4000000a        0x0
+                0x4000000a                __bss_start = .
+                0x4000000a                __bss_start__ = .
+ *(.bss)
+ .bss           0x4000000a        0x0 .\obj\Startup.o
+ .bss           0x4000000a        0x0 .\obj\main.o
+ *(COMMON)
+                0x4000000c                . = ALIGN (0x4)
+                0x4000000c                __bss_end__ = .
+                0x4000000c                __bss_end = .
+                0x4000000c                _end = .
+                0x4000000c                PROVIDE (end, .)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x40
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 .\obj\Startup.o
+ .debug_aranges
+                0x00000020       0x20 .\obj\main.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000       0xf9
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000       0x7e .\obj\Startup.o
+ .debug_info    0x0000007e       0x7b .\obj\main.o
+
+.debug_abbrev   0x00000000       0x28
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x14 .\obj\Startup.o
+ .debug_abbrev  0x00000014       0x14 .\obj\main.o
+
+.debug_line     0x00000000       0xfc
+ *(.debug_line)
+ .debug_line    0x00000000       0xa6 .\obj\Startup.o
+ .debug_line    0x000000a6       0x56 .\obj\main.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+OUTPUT(.\obj\Aufgabe2a.elf elf32-bigarm)
+
+Cross Reference Table
+
+Symbol                                            File
+BaseStickConfig                                   .\obj\Startup.o
+_HardReset                                        .\obj\Startup.o
+_ResetEntry                                       .\obj\Startup.o
+_SoftReset                                        .\obj\Startup.o
+__bss_end__                                       .\obj\Startup.o
+__bss_start__                                     .\obj\Startup.o
+_app_entry                                        .\obj\Startup.o
+_data                                             .\obj\Startup.o
+_edata                                            .\obj\Startup.o
+_etext                                            .\obj\Startup.o
+_startup                                          .\obj\Startup.o
+main                                              .\obj\main.o
+                                                  .\obj\Startup.o
