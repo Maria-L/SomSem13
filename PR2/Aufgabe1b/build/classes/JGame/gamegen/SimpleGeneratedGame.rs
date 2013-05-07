@@ -1,0 +1,7 @@
+gamegen.SimpleGeneratedGame$Player
+gamegen.SimpleGeneratedGame$AgentMotion
+gamegen.SimpleGeneratedGame$AgentBullet
+gamegen.SimpleGeneratedGame
+gamegen.SimpleGeneratedGame$PlayerBullet
+gamegen.SimpleGeneratedGame$1
+gamegen.SimpleGeneratedGame$Agent

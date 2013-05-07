@@ -1,0 +1,5 @@
+examples.matrixminer.MatrixMiner$Bullet
+examples.matrixminer.MatrixMiner$Goodie
+examples.matrixminer.MatrixMiner$Player
+examples.matrixminer.MatrixMiner$Enemy
+examples.matrixminer.MatrixMiner

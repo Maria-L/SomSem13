@@ -1,0 +1,10 @@
+jgame.platform.AppConfig$3
+jgame.platform.AppConfig$2
+jgame.platform.AppConfig$5
+jgame.platform.AppConfig$4
+jgame.platform.AppConfig$7
+jgame.platform.AppConfig$6
+jgame.platform.AppConfig
+jgame.platform.AppConfig$FieldChangeHandler
+jgame.platform.AppConfig$KeyField
+jgame.platform.AppConfig$1

@@ -1,0 +1,13 @@
+examples.guardian.Guardian$Player
+examples.guardian.Guardian$UFO
+examples.guardian.Guardian$Bomber
+examples.guardian.Guardian$Mutant
+examples.guardian.Guardian$Humanoid
+examples.guardian.Guardian$Laser
+examples.guardian.Guardian$Splitter
+examples.guardian.Guardian$Enemy
+examples.guardian.Guardian$Explo
+examples.guardian.Guardian
+examples.guardian.Guardian$HomeBase
+examples.guardian.Guardian$Globe
+examples.guardian.Guardian$Baiter

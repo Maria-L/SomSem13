@@ -1,0 +1,9 @@
+examples.Insecticide$Scorpion
+examples.Insecticide$Spider
+examples.Insecticide
+examples.Insecticide$Bullet
+examples.Insecticide$1
+examples.Insecticide$Worm
+examples.Insecticide$Player
+examples.Insecticide$Player$1
+examples.Insecticide$Beetle

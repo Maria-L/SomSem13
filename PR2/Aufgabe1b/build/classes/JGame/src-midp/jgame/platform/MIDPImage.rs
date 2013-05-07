@@ -1,0 +1,1 @@
+jgame.platform.MIDPImage
