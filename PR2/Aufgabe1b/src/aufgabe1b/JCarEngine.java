@@ -32,12 +32,10 @@ public class JCarEngine extends JGEngine implements Constants {
     @Override
     public void initGame() {
         setFrameRate(
-                35, // 35 = frame rate, 35 frames per second
+                1, // 35 = frame rate, 35 frames per second
                 2); //  2 = frame skip, skip at most 2 frames before displaying a frame again
 
-        for (int i = 0; i < 20; i++) {
-            new Bird();
-        }
+        new Car();
 
         //defineMedia("media.tbl"); // Load in the media we'll use for the game.
     }

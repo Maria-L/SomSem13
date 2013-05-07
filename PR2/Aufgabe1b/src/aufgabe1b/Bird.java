@@ -24,6 +24,7 @@ public class Bird extends JGObject implements Constants {
         yspeed = Math.random() * 2;
     }
 
+    @Override
     public void move() {
         if (x > PFWIDTH - 8 && xspeed > 0) {
             xspeed = -xspeed;
@@ -39,6 +40,7 @@ public class Bird extends JGObject implements Constants {
         }
     }
     
+    @Override
     public void paint() {
         eng.setColor(JGColor.black);
         eng.drawOval(x,y,16,16,true,true);
