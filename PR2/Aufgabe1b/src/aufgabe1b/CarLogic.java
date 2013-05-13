@@ -12,13 +12,15 @@ package aufgabe1b;
 public class CarLogic extends Aufgabe1b {
 
     //Beginn Attribute
-    private final double mass;          //kg
-    private final double powerPropMax;  //W (
-    public final double speedMax;       //m/s
-    public double level;                //-1..1
-    public double time;                 //s
-    public double speed;                //m/s
-    public double pos;                  //m
+    private final double mass;           //kg
+    private final double powerPropMax;   //W (
+    public final double speedMax;        //m/s
+    private double level;                //-1..1
+    private double time;                 //s
+    private double speed;                //m/s
+    private double pos;                  //m
+    private boolean ABS;                 //Antiblockiersystem
+    private boolean ASR;                 //AntiSchlupfRegelung
 
     //Ende Attribute
     //Beginn Konstruktoren
@@ -47,6 +49,14 @@ public class CarLogic extends Aufgabe1b {
         this.level = level;
     }
     
+    public void setABS(boolean x) {
+        ABS = x;
+    }
+    
+    public void setASR(boolean x) {
+        ASR = x;
+    }
+
     public double getPos() {
         return pos;
     }

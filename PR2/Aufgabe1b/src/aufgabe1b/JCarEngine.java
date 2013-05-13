@@ -1,5 +1,9 @@
 package aufgabe1b;
 
+//import java.awt.*;
+//import java.awt.event.*;
+
+import interfaces.*;
 import jgame.*;
 import jgame.platform.*;
 
@@ -8,7 +12,20 @@ import jgame.platform.*;
  * @author Steffen Giersch, Maria Lüdemann
  */
 public class JCarEngine extends JGEngine implements Constants {
+    
+    //Variables, getter and setter
+    
+    static double frameTime;
+    Car car;
 
+    
+    public static double getFrameTime() {
+        return frameTime;
+    }
+
+    //Methods
+    
+    
     public JCarEngine(JGPoint size) {
         // This inits the engine as an application.
         initEngine(size.x, size.y);
@@ -32,29 +49,31 @@ public class JCarEngine extends JGEngine implements Constants {
     @Override
     public void initGame() {
         setFrameRate(
-                1, // 35 = frame rate, 35 frames per second
+                60, // 35 = frame rate, 35 frames per second
                 2); //  2 = frame skip, skip at most 2 frames before displaying a frame again
 
-        new Car();
+        frameTime = System.currentTimeMillis();
+        car = new Car();
 
         //defineMedia("media.tbl"); // Load in the media we'll use for the game.
     }
-    //Used to animate the text
-    double texttimer = 0;
 
     public void doFrame() {
+
+        car.gasPressed(getKey(38), getKey(40)); //PfeilOben => Gas geben || PfeilUnten => bremsen
+        car.setABS(getKey(39));                 //PfeilLinks => ABS an/aus
+        car.setASR(getKey(41));                 //PfeilRechts => ASR an/aus
         moveObjects(
                 null,   //object name prefix of objects to move (null means any)
                 0);     // object collision ID of objects to move (0 means any)
+        
+        
+        frameTime = System.currentTimeMillis();
     }
 
-    public void paintFrame() {
-        setColor(JGColor.yellow);
-
-        drawString("Hello World",
-                viewWidth() / 2 + 50 * Math.sin(texttimer), //xpos
-                viewHeight() / 2 + 50 * Math.cos(texttimer), //ypos
-                0 //text alignment; -1 is left-aligned, 0 is centered, 1 is right aligned)
-                );
-    }
+//    public void paintFrame() {
+//
+//    }
+    
+    
 }
