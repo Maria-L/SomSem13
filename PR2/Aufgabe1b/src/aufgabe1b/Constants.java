@@ -17,4 +17,16 @@ public interface Constants {
     public final double KM_TO_MS    = 3.6;
     public final double W_TO_KW     = 1000;
     public final double MS_TO_S     = 1000;
+    
+    public final int GAS        = 'W';
+    public final int BRAKE      = 'S';
+    public final int ABS        = 'K';
+    public final int ASR        = 'L';
+    
+    public final int NORMAL     = 'T';
+    public final int ICE        = 'Z';
+    public final int SNOW       = 'U';
+    public final int RAIN       = 'I';
+    
+    public final double EPSILON     = 0.0001;
 }
