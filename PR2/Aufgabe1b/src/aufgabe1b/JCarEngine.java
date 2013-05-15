@@ -14,10 +14,16 @@ public class JCarEngine extends JGEngine implements Constants {
 
     //Variables, getter and setter
     static double frameTime;
+    static double deltaTime;
+    static double fps;
     Car car;
 
-    public static double getFrameTime() {
-        return frameTime;
+//    public static double getFrameTime() {
+//        return frameTime;
+//    }
+    
+    public static double getDeltaTime() {
+        return deltaTime;
     }
 
     //Methods
@@ -38,45 +44,52 @@ public class JCarEngine extends JGEngine implements Constants {
                 JGColor.white,// background colour -> use default colour black
                 null // standard font -> use default font
                 );
-
     }
 
     @Override
     public void initGame() {
         setFrameRate(
-                60, // 35 = frame rate, 35 frames per second
+                60, // 60 = frame rate, 60 frames per second
                 2); //  2 = frame skip, skip at most 2 frames before displaying a frame again
+        
         defineImage("car", "-", 1, "car.png", "-");
+        defineImage("car_destroyed", "-", 1, "car_destroyed.png", "-");
         defineImage("background", "-", 1, "background.png", "-");
         
         setBGImage("background");
-        frameTime = System.currentTimeMillis();
         car = new Car();
-
-        //defineMedia("media.tbl"); // Load in the media we'll use for the game.
+        frameTime = System.currentTimeMillis();
     }
 
     public void doFrame() {
 
-        car.gasPressed(getKey(GAS));             //PfeilOben => Gas geben
-        car.setABS(getKey(ABS));                 //PfeilLinks => ABS an/aus
-        car.setASR(getKey(ASR));                 //PfeilRechts => ASR an/aus
-        car.brakePressed(getKey(BRAKE));         //B => Bremsen
-        car.setNormal(getKey(NORMAL));
-        car.setIce(getKey(ICE));
-        car.setSnow(getKey(SNOW));
-        car.setRain(getKey(RAIN));
+        //Give UserInput to the car which gives it to the carlogic
+        car.gasPressed(getKey(GAS));    //W => Gas
+        car.setABS(getKey(ABS));        //K => ABS on/off
+        car.setASR(getKey(ASR));        //L => ASR on/off
+        car.brakePressed(getKey(BRAKE));//S => Brakes
+        car.reset(getKey(RESET));       //R => Reset
+        car.setNormal(getKey(NORMAL));  //T => Normal traction
+        car.setIce(getKey(ICE));        //Z => Ice traction
+        car.setSnow(getKey(SNOW));      //U => Snow traction
+        car.setRain(getKey(RAIN));      //I => Rain traction
 
+        //Call the move funktions of all registered objects - only car
         moveObjects(
                 null, //object name prefix of objects to move (null means any)
                 0);     // object collision ID of objects to move (0 means any)
 
-
+        //refresh time of the current frame
+        deltaTime = (System.currentTimeMillis() - frameTime) / MS_TO_S;
         frameTime = System.currentTimeMillis();
+        fps = 1/deltaTime;
     }
 
+    //Calls the paint funktion of every registered object (car)
     public void paintFrame() {
+        //Set the color of all the text displayed in the picture to white
         setColor(JGColor.white);
+        //Draws the status of the ABS, ASR, Traction and the controll in the picture
         if (getKey(ABS)) {
             drawString("ABS an", 0, 420, -1);
         } else {
@@ -88,6 +101,9 @@ public class JCarEngine extends JGEngine implements Constants {
         } else {
             drawString("ASR aus", 0, 440, -1);
         }
+        
+        //drawString(Double.toString(fps), 0, 200, -1);
+        
         
         if (car.getControll())  {drawString("Unter Kontrolle", 0, 0, -1);}
         else                    {drawString("Keine Kontrolle", 0, 0, -1);}

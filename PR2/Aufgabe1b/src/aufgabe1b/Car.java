@@ -9,6 +9,7 @@ public class Car extends JGObject implements Constants {
     private double level = 0.0;
     private double brakeLevel = 0.0;
 
+    //Constructor
     Car() {
         super(
                 "car", //name by which the object is known
@@ -18,57 +19,36 @@ public class Car extends JGObject implements Constants {
                 1, //collision ID
                 null //name of sprite or animation to use - null is none
                 );
-
-        xspeed = 0;
-        //yspeed = 0;
     }
+    //Constructor end
 
-    public void gasPressed(boolean gas) {
-        if (gas && level < 1) {
-            level = level + ((System.currentTimeMillis() - JCarEngine.getFrameTime()) / MS_TO_S);
-        } else if (gas) {
-            level = 1.0;
-        } else {
-            level = 0.0;
-        }
-    }
-
-    public void brakePressed(boolean brake) {
-        if (brake && brakeLevel < 1) {
-            brakeLevel = brakeLevel + ((System.currentTimeMillis() - JCarEngine.getFrameTime()) / MS_TO_S);
-        } else if (brake) {
-            brakeLevel = 1.0;
-        } else {
-            brakeLevel = 0.0;
-        }
-    }
-    
+    //Setter
     public void setTraction(Double x) {
         carlogic.setTraction(x);
     }
-    
-    public double getTraction() {
-        return carlogic.getTraction();
-    }
-    
-    public boolean getControll() {
-        return carlogic.getControll();
-    }
-    
+
     public void setNormal(boolean x) {
-        if(x) {setTraction(1.0);}
+        if (x) {
+            setTraction(1.0);
+        }
     }
-    
+
     public void setIce(boolean x) {
-        if(x) {setTraction(0.1);}
+        if (x) {
+            setTraction(0.1);
+        }
     }
-    
+
     public void setSnow(boolean x) {
-        if(x) {setTraction(0.3);}
+        if (x) {
+            setTraction(0.3);
+        }
     }
-    
+
     public void setRain(boolean x) {
-        if(x) {setTraction(0.7);}
+        if (x) {
+            setTraction(0.7);
+        }
     }
 
     public void setABS(boolean x) {
@@ -79,24 +59,71 @@ public class Car extends JGObject implements Constants {
         carlogic.setASR(x);
     }
 
+    public void reset(boolean x) {
+        if (x) {
+            carlogic.reset();
+        }
+    }
+    //Setter end
+
+    //Getter
+    public double getTraction() {
+        return carlogic.getTraction();
+    }
+
+    public boolean getControll() {
+        return carlogic.getControll();
+    }
+    //Getter end
+
+    //Methods
+    
+    //Gets a boolean and simulates the time until the gas is pressed to max
+    public void gasPressed(boolean gas) {
+        if (gas && level < 1) {
+            level = level + JCarEngine.getDeltaTime();
+        } else if (gas) {
+            level = 1.0;
+        } else {
+            level = 0.0;
+        }
+    }
+
+    //Gets a boolean and simulates the time until the brakes are pressed to max
+    public void brakePressed(boolean brake) {
+        if (brake && brakeLevel < 1) {
+            brakeLevel = brakeLevel + JCarEngine.getDeltaTime();
+        } else if (brake) {
+            brakeLevel = 1.0;
+        } else {
+            brakeLevel = 0.0;
+        }
+    }
+    //Methods end
+    
+    //Engine Methods
     @Override
     public void move() {
-        if(!carlogic.getControll()) {
-            carlogic.step(((System.currentTimeMillis() - JCarEngine.getFrameTime()) / MS_TO_S), //DeltaTime
-                0, //Level
-                5);   //brakeLevel
+        if (!carlogic.getControll()) {
+            carlogic.step(JCarEngine.getDeltaTime(), //DeltaTime
+                    0, //Level
+                    5);   //brakeLevel
+        } else {
+            carlogic.step(JCarEngine.getDeltaTime(), //DeltaTime
+                    level, //Level
+                    brakeLevel);   //brakeLevel
         }
         
-        carlogic.step(((System.currentTimeMillis() - JCarEngine.getFrameTime()) / MS_TO_S), //DeltaTime
-                level, //Level
-                brakeLevel);   //brakeLevel
-        carlogic.myToString();
-//        System.out.println(System.currentTimeMillis() - JCarEngine.getFrameTime());
-        x = (carlogic.getPos()) % PFWIDTH;
+        x = (carlogic.getPos()*GFACTOR) % PFWIDTH;
     }
 
     @Override
     public void paint() {
-        eng.drawImage(x,y, "car");
+        if (carlogic.getControll()) {
+            eng.drawImage(x, y, "car");
+        } else {
+            eng.drawImage(x, y, "car_destroyed");
+        }
     }
+    //Engine Methods end
 }
