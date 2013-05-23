@@ -15,7 +15,7 @@ public class CarLogic extends Aufgabe1b {
     private boolean ABS;                //Antiblockiersystem
     private boolean ASR;                //AntiSchlupfRegelung
     private double traction = 1;        //Traktion
-    private boolean controll = true;    //Kontrolle 
+    private boolean controll = true;    //Kontrolle  -> Attribut für den Zustand, der Kontrolllosigkeit(slide)
 
     //Ende Attribute
     
@@ -79,7 +79,7 @@ public class CarLogic extends Aufgabe1b {
     //Führt einen Bewegungsschritt für das Auto aus und berechnet dafür die benötigten Werte
     // indem es die Maße der DeltaTime bekommt sowie den level als Angabe des Gashebels
     public void step(double deltaTime, double level, double brakeLevel) {
-
+        
         if (level > 0.0 && (Math.abs(this.speed) < EPSILON)) {
             this.speed = 1;
         } 
@@ -114,7 +114,7 @@ public class CarLogic extends Aufgabe1b {
             double force;                                                             //Newton
             
             if (ASR) {
-                force = forceProp * traction + forceDrag;
+                force = forceProp * traction+ forceDrag;
             } else {
                 force = forceProp + forceDrag;
             }
@@ -130,10 +130,10 @@ public class CarLogic extends Aufgabe1b {
 
             //Neue Berechnung der Geschwindigkeit für den nächsten Step
             this.speed = speed + (acc * deltaTime);                                   //m/s
-            if (this.speed < 0) {this.speed = 0;}
+            if (this.speed < EPSILON) {this.speed = 0.0;}                             //Abfangen für den Stopzustand
             
-            if(!(Math.abs(force / forcePropMax) <= traction && 
-                    Math.abs(forceBrake / forcePropMax) <= traction)) {
+            if((Math.abs(force / forcePropMax) > traction || 
+                    Math.abs(forceBrake / forcePropMax) > traction)) {
                 controll = false;
             }
         }

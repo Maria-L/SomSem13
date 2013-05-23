@@ -102,12 +102,6 @@ public class JCarEngine extends JGEngine implements Constants {
             drawString("ASR aus", 0, 440, -1);
         }
         
-        //drawString(Double.toString(fps), 0, 200, -1);
-        
-        
-        if (car.getControll())  {drawString("Unter Kontrolle", 0, 0, -1);}
-        else                    {drawString("Keine Kontrolle", 0, 0, -1);}
-        
         if (car.getTraction() == 1.0) {drawString("Traktion: Normal", 0, 460, -1);}
         if (car.getTraction() == 0.1) {drawString("Traktion: Eis", 0, 460, -1);}
         if (car.getTraction() == 0.3) {drawString("Traktion: Schnee", 0, 460, -1);}

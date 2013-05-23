@@ -74,16 +74,25 @@ public class Car extends JGObject implements Constants {
     public boolean getControll() {
         return carlogic.getControll();
     }
+    
+    public double getLevel() {
+        return level;
+    }
+    
+    public double getBrakeLevel() {
+        return brakeLevel;
+    }
     //Getter end
 
     //Methods
-    
     //Gets a boolean and simulates the time until the gas is pressed to max
     public void gasPressed(boolean gas) {
         if (gas && level < 1) {
             level = level + JCarEngine.getDeltaTime();
         } else if (gas) {
             level = 1.0;
+        } else if (!gas && level > 0) {
+            level = level - JCarEngine.getDeltaTime();
         } else {
             level = 0.0;
         }
@@ -95,12 +104,14 @@ public class Car extends JGObject implements Constants {
             brakeLevel = brakeLevel + JCarEngine.getDeltaTime();
         } else if (brake) {
             brakeLevel = 1.0;
+        } else if (!brake && brakeLevel > 0) {
+            brakeLevel = brakeLevel - JCarEngine.getDeltaTime();
         } else {
             brakeLevel = 0.0;
         }
     }
     //Methods end
-    
+
     //Engine Methods
     @Override
     public void move() {
@@ -113,8 +124,8 @@ public class Car extends JGObject implements Constants {
                     level, //Level
                     brakeLevel);   //brakeLevel
         }
-        
-        x = (carlogic.getPos()*GFACTOR) % PFWIDTH;
+        carlogic.myToString();
+        x = (carlogic.getPos() * GFACTOR) % PFWIDTH;
     }
 
     @Override
