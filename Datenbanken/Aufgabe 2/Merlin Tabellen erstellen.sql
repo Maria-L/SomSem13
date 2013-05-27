@@ -1,10 +1,10 @@
 create table Voegel 
   (VogelID integer not null PRIMARY KEY,
-  Kategorie         varchar2(10) not null,
-  Latainischer_Name varchar2(100) unique not null,
-  Englischer_Name   varchar2(100),
-  Deutscher_Name    varchar2(50) not null,
-  check(Kategorie in ('species', 'subspecies'))
+  Kategorie         varchar2(20) not null,
+  Latainischer_Name varchar2(250) unique not null,
+  Englischer_Name   varchar2(250),
+  Deutscher_Name    varchar2(250),
+  check(Kategorie in ('species', 'subspecies', 'group (polytypic)', 'group (monotypic)'))
   );
   
 create table Beobachtungsort
