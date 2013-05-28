@@ -1,5 +1,5 @@
-drop table beobachtet_ cascade constraints PURGE;
-drop table checkliste_ cascade constraints PURGE;
-drop table Beobachtungsort_ cascade constraints PURGE;
-drop table Voegel_ cascade constraints PURGE;
-drop table benutzer_ cascade constraints PURGE;
+drop table beobachtet cascade constraints PURGE;
+drop table checkliste cascade constraints PURGE;
+drop table Beobachtungsort cascade constraints PURGE;
+drop table Voegel cascade constraints PURGE;
+drop table benutzer cascade constraints PURGE;

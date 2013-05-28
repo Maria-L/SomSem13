@@ -1,1 +1,4 @@
-select * from MERLIN.birds_de where EXISTS (select * from MERLIN.birds, MERLIN.birds_de where merlin.birds.b_scientific_name = merlin.birds_de.de_latein);
+select vogelid, latainischer_name, deutscher_name, case 
+    when deutscher_name is null then 'delete' 
+    when deutscher_name is not null then 'keep'
+    end from voegel where kategorie = 'species';

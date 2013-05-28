@@ -1,42 +1,57 @@
-/*############################################################################################################*/
-/*Bindet MERLIN.birds mit den deutschen namen von MERLIN.birds_ioc abhängig vom latainischen namen in voegel_ ein*/
-INSERT INTO VOEGEL_
-  (VogelID, Latainischer_Name, Kategorie, Deutscher_Name, Englischer_Name)
-SELECT
-  merlin.birds.b_id,
-  merlin.birds.b_scientific_name,
-  merlin.birds.b_category,
-  merlin.birds_ioc.ioc_german_name,
-  merlin.birds.b_english_name
-FROM MERLIN.birds, MERLIN.birds_ioc WHERE birds_ioc.ioc_scientific_name = merlin.birds.b_scientific_name
-                                    AND not merlin.birds_ioc.ioc_german_name is null
-                                    AND (merlin.birds.b_category = 'species' OR merlin.birds.b_category = 'group (polytypic)');
-/*############################################################################################################*/
-
-/*Soll Datensätze in Kombination von birds und birds_de in voegel_ einfügen, die noch fehlen*/
-INSERT INTO VOEGEL_
-  (VogelID, Latainischer_Name, Kategorie, Deutscher_Name, Englischer_Name)
-SELECT
-  merlin.birds.b_id,
-  merlin.birds.b_scientific_name,
-  merlin.birds.b_category,
-  merlin.birds_de.de_deutsch,
-  merlin.birds.b_english_name
-FROM MERLIN.birds, MERLIN.birds_de, voegel_ WHERE   birds_de.de_latein = merlin.birds.b_scientific_name
-                                            AND     birds_de.de_latein != voegel_.latainischer_name
-                                            AND not merlin.birds_de.de_deutsch is null;
-
-/*############################################################################################################*/
-/*Fügt alle Einträge aus MERLIN.birds nach, die zur Kategorie Group(*) oder subspecies gehören*/
-INSERT INTO VOEGEL_
+/*################################################ BEGINN ############################################################*/
+/*Fügt alle Einträge aus MERLIN.birds nach VOEGEL*/
+INSERT INTO VOEGEL
   (VogelID, Latainischer_Name, Kategorie, englischer_name)
 SELECT
   merlin.birds.b_id,
   merlin.birds.b_scientific_name,
   merlin.birds.b_category,
   merlin.birds.b_english_name
-FROM MERLIN.birds WHERE birds.b_category = 'group (monotypic)' 
-                  /*OR birds.b_category = 'group (polytypic)'*/
-                  /*OR birds.b_category = 'subspecies'*/;
-/*############################################################################################################*/
+FROM MERLIN.birds;
 
+/*Schiebe die deutschen Namen aus BIRDS_DE in die betreffenden Tupel aus VOEGEL*/
+UPDATE VOEGEL
+  SET VOEGEL.deutscher_name = ( select MERLIN.BIRDS_DE.de_deutsch 
+                                from MERLIN.BIRDS_DE 
+                                where latainischer_name = MERLIN.BIRDS_DE.de_latein);
+
+/*Schiebe die deutschen Namen aus BIRDS_DE in die betreffenden Tupel aus VOEGEL, wobei nicht kopiert wird, wenn der zu kopierende Wert (null) ist*/
+UPDATE VOEGEL
+  SET VOEGEL.deutscher_name = ( select MERLIN.BIRDS_IOC.IOC_GERMAN_NAME 
+                                from MERLIN.BIRDS_IOC 
+                                where latainischer_name = MERLIN.BIRDS_IOC.IOC_SCIENTIFIC_NAME) 
+  where (select MERLIN.BIRDS_IOC.IOC_GERMAN_NAME 
+    from MERLIN.BIRDS_IOC where latainischer_name = MERLIN.BIRDS_IOC.IOC_SCIENTIFIC_NAME) is not null;
+                                
+/*Dasselbe nochmal in Englisch*/
+                                
+ /*Species und dazugehörige Subspecies ohne deutschen Namen werden gelöscht*/                         
+delete from voegel where 
+    (trim(substr(latainischer_name, 1, instr(latainischer_name, ' ',1, 2))) in (select trim(latainischer_name) from voegel where deutscher_name is null and kategorie = 'species') 
+    or 
+    deutscher_name is null and kategorie = 'species');
+
+/*Fülle die ranges aus BIRDS in BEOBACHTUNGSORT, wobei doppelte nicht mit kopiert werden und überflüssige b_id's gelöscht werden*/
+INSERT INTO BEOBACHTUNGSORT
+  (beobachtungsortID, beobachtungsort)
+SELECT 
+  min(merlin.birds.b_id), 
+  merlin.birds.b_range
+FROM merlin.birds where merlin.birds.b_range is not null group by merlin.birds.b_range;
+
+/*Befülle die Checkliste*/
+INSERT INTO CHECKLISTE
+  (vogelid, beobachtungsid)
+SELECT
+  vogelid, 
+  beobachtungsortid 
+FROM voegel v, merlin.birds mb, beobachtungsort b where v.latainischer_name = mb.b_scientific_name 
+                                                  and b.beobachtungsort = mb.b_range ;
+                                                  
+/*Da nicht genug Platz in der Datenbank war um die Checkliste einzufügen haben wir noch einen View erstellt, der den Inhalt der Checkliste darstellt*/
+create or replace view checkliste_view as 
+  select vogelid, beobachtungsortid from voegel v, merlin.birds mb, beobachtungsort b 
+    where v.latainischer_name = mb.b_scientific_name 
+    and b.beobachtungsort = mb.b_range;
+select * from checkliste_view;
+/*################################################  ENDE  ############################################################*/
