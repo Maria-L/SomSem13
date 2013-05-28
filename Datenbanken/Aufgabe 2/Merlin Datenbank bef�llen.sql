@@ -1,4 +1,47 @@
-/*################################################ BEGINN ############################################################*/
+/*################################################ BEGINN TABELLEN ERSTELLEN ############################################################*/
+create table Voegel
+  (VogelID integer not null PRIMARY KEY,
+  Kategorie         varchar2(20) not null,
+  Latainischer_Name varchar2(80) unique not null,
+  Englischer_Name   varchar2(70),
+  Deutscher_Name    varchar2(50), /*Ist nicht not null, weil es einen sehr viel größeren Aufwand erzeugt hätte, die Tabellen zu befüllen*/
+  check(Kategorie in ('species', 'subspecies', 'group (monotypic)', 'group (polytypic)'))
+  );
+  
+create table Beobachtungsort
+  (BeobachtungsortID integer not null PRIMARY KEY,
+  Beobachtungsort       varchar2(500) not null,
+  Staat                 varchar2(40),
+  Zoographische_Region  varchar2(50)
+  );
+  
+create table Benutzer
+  (BenutzerName         varchar2(60) not null PRIMARY KEY,
+  EMail_Addresse        varchar2(100) unique not null,
+  Rolle                 integer not null
+  );
+  
+create table Checkliste
+  (VogelID              integer not null,
+  BeobachtungsID        integer not null,
+  PRIMARY KEY(VogelID,BeobachtungsID),
+  FOREIGN KEY(VogelID)        references Voegel,
+  FOREIGN KEY(BeobachtungsID) references Beobachtungsort
+  );
+  
+create table Beobachtet
+  (BeobachtungsID     integer not null PRIMARY KEY,
+  BenutzerName        varchar2(60) not null,
+  BeobachtungsortID   integer not null,
+  VogelID             integer not null,
+  BeobBeginn          date,
+  BeobEnde            date,
+  Kommentar           clob,
+  FOREIGN KEY(BenutzerName)       references Benutzer,
+  FOREIGN KEY(BeobachtungsortID)  references Beobachtungsort,
+  FOREIGN KEY(VogelID)            references Voegel
+  );
+/*################################################ BEGINN TABELLEN BEFÜLLEN ############################################################*/
 /*Fügt alle Einträge aus MERLIN.birds nach VOEGEL*/
 INSERT INTO VOEGEL
   (VogelID, Latainischer_Name, Kategorie, englischer_name)
@@ -63,10 +106,10 @@ SELECT
 FROM voegel v, merlin.birds mb, beobachtungsort b where v.latainischer_name = mb.b_scientific_name 
                                                   and b.beobachtungsort = mb.b_range ;
                                                   
-/*Da nicht genug Platz in der Datenbank war um die Checkliste einzufügen haben wir noch einen View erstellt, der den Inhalt der Checkliste darstellt*/
-create or replace view checkliste_view as 
-  select vogelid, beobachtungsortid from voegel v, merlin.birds mb, beobachtungsort b 
-    where v.latainischer_name = mb.b_scientific_name 
-    and b.beobachtungsort = mb.b_range;
-select * from checkliste_view;
-/*################################################  ENDE  ############################################################*/
+/*################################################  BEGINN TABELLEN LÖSCHEN  ############################################################*/
+
+drop table beobachtet cascade constraints PURGE;
+drop table checkliste cascade constraints PURGE;
+drop table Beobachtungsort cascade constraints PURGE;
+drop table Voegel cascade constraints PURGE;
+drop table benutzer cascade constraints PURGE;
