@@ -65,7 +65,7 @@ START_DELAY:
 ##### run #####
 RUN:
 	mov r0, #200		@ r0 für den SafeDelay vorbereiten
-	bl SafeDelay		@ Um 0,2 Sekunden verzögern
+	bl SafeDelay		@ Um 0,02 Sekunden verzögern
 
 	bl TestIfPushButtonPressed	@ Ist S7 gedrückt?
 	cmp r0, #1			@ Test aus r0 ob S7 gedrückt ist?
@@ -134,10 +134,12 @@ LEDBarEndReached:
 	stmfd sp!, {r1-r4,lr}
 
 	ldr r1, =GPIO1_PIN	@ IO-Register Addresse laden
-	mov r0, #0			@ 0 in r0 schieben
+	ldr r3, [r1]		@ Inhalt des IO-Registers laden
 	ldr r2, =0x7FFF		@ 15 Einsen in r2 laden
-	cmp r0,r2			@ leuchten alle 15 LEDs?
+	and r3,r2			@ leuchten alle 15 LEDs?
+	cmp r3,r2
 	moveq r0, #1		@ Wenn ja, r0 -> 1
+	movne r0, #0		@ Wenn nein, r0 -> 0
 
 	ldmfd sp!, {r1-r4,lr}
 	bx lr
