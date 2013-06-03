@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Power extends PhysicsScalar {
+public interface Power extends PhysicsScalar, Comparable <Power> {
     
     public double w();
     public double kw();

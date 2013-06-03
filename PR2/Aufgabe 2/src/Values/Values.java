@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package Values;
+import Interfaces.*;
 
 /**
  *
@@ -11,6 +12,13 @@ package Values;
 public final class Values {
     //Nicht instanziierbar
     private Values() {};
+    
+    //Potenzen
+    public static final double CENT = Math.pow(10,-2);
+    public static final double DEZI = Math.pow(10,2);
+    
+    public static final double KILO = Math.pow(10,4);
+     
     
     //Einzigartige öffentliche Konstanten
     public static final Length ZEROLENGTH = lengthInM(0.0);

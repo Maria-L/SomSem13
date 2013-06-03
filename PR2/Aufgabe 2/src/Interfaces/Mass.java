@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Mass extends PhysicsScalar {
+public interface Mass extends PhysicsScalar, Comparable <Mass> {
     
     public double mg();
     public double g();

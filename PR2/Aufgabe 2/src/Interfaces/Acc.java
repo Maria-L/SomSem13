@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Acc extends PhysicsScalar {      // in SI m/s^2
+public interface Acc extends PhysicsScalar, Comparable <Acc> {      // in SI m/s^2
     
     public double mss();
     

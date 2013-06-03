@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Angle extends PhysicsScalar {
+public interface Angle extends PhysicsScalar, Comparable <Angle> {
     
     public double rad();
     public double deg();

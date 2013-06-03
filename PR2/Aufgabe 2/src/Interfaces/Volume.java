@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Volume extends PhysicsScalar {
+public interface Volume extends PhysicsScalar, Comparable <Volume> {
     
     public double cubcm();
     public double cubm();

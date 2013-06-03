@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Length extends PhysicsScalar {
+public interface Length extends PhysicsScalar, Comparable <Length> {
     
     public double ft();
     public double m();

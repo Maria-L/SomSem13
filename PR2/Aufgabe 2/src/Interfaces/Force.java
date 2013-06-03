@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Force extends PhysicsScalar {
+public interface Force extends PhysicsScalar, Comparable <Force> {
     
     public double j();
     public double kj();

@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Speed extends PhysicsScalar {
+public interface Speed extends PhysicsScalar, Comparable <Speed> {
     
     public double ms();
     public double kmh();

@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Work extends PhysicsScalar {
+public interface Work extends PhysicsScalar, Comparable <Work> {
     
     public double j();
     public double kj();

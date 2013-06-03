@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Area extends PhysicsScalar {
+public interface Area extends PhysicsScalar, Comparable <Area> {
     
     public double sqcm();
     public double sqm();

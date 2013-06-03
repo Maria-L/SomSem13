@@ -8,6 +8,6 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface PhysicsValue {
+public interface PhysicsValue extends Value {
     
 }

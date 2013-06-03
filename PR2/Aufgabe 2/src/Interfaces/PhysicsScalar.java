@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface PhysicsScalar {
+public interface PhysicsScalar extends PhysicsValue {
     
     boolean isZero();
     boolean isValid();
