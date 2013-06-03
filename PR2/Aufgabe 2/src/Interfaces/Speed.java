@@ -10,4 +10,22 @@ package Interfaces;
  */
 public interface Speed {
     
+    public double ms();
+    public double kmh();
+    
+    public Speed inverse();
+    public Speed add(Speed speed);
+    public Speed sub(Speed speed);
+    
+    
+    public Speed mul(double factor);
+    public Speed div(double factor);
+    public double div(Speed speed);
+    
+    public Length mul(TimeDiff time);
+    public Acc div(TimeDiff time);
+    public TimeDiff div(Acc acc);
+     
+    public String toStringInKmh();
+    
 }
