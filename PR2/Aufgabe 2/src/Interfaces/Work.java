@@ -8,16 +8,14 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Work {
+public interface Work extends PhysicsScalar {
     
     public double j();
     public double kj();
-
     
     public Work inverse();
     public Work add(Work work);
     public Work sub(Work work);
-    
     
     public Work mul(double factor);
     public Work div(double factor);

@@ -8,6 +8,18 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Angle {
+public interface Angle extends PhysicsScalar {
     
+    public double rad();
+    public double deg();
+    
+    public Angle inverse();
+    public Angle add(Angle angle);
+    public Angle sub(Angle angle);
+    
+    public Angle mul(double factor);
+    public Angle div(double factor);
+    public double div(Angle angle);
+    
+    public AngleSpeed div(TimeDiff time);
 }

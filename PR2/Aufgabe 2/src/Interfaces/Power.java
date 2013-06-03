@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Power {
+public interface Power extends PhysicsScalar {
     
     public double w();
     public double kw();
@@ -16,7 +16,6 @@ public interface Power {
     public Power inverse();
     public Power add(Power power);
     public Power sub(Power power);
-    
     
     public Power mul(double factor);
     public Power div(double factor);

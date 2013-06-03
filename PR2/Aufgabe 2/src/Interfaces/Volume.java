@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Volume {
+public interface Volume extends PhysicsScalar {
     
     public double cubcm();
     public double cubm();
@@ -16,7 +16,6 @@ public interface Volume {
     public Volume inverse();
     public Volume add(Volume volume);
     public Volume sub(Volume volume);
-    
     
     public Volume mul(double factor);
     public Volume div(double factor);

@@ -8,6 +8,19 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface AngleSpeed {
+public interface AngleSpeed extends PhysicsScalar {
     
+    public double rads();
+    public double degs();
+    
+    public AngleSpeed inverse();
+    public AngleSpeed add(AngleSpeed anglespeed);
+    public AngleSpeed sub(AngleSpeed anglespeed);
+    
+    
+    public AngleSpeed mul(double factor);
+    public AngleSpeed div(double factor);
+    public double div(AngleSpeed anglespeed);
+    
+    Angle mul(TimeDiff time);
 }

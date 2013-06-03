@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface TimeDiff {
+public interface TimeDiff extends PhysicsScalar {
     public double ns();
     public double ms();
     public double s();
