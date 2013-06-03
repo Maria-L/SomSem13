@@ -8,8 +8,6 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface PhysicsScalar {
+public interface Value extends Immutable {
     
-    boolean isZero();
-    boolean isValid();
 }

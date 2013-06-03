@@ -8,19 +8,18 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Length {
+public interface Length extends PhysicsScalar {
+    
     public double ft();
     public double m();
     public double km();
     public double dm();
     public double cm();
     public double mm();
-    public double nm();
     
     public Length inverse();
     public Length add(Length length);
     public Length sub(Length length);
-    
     
     public Length mul(double factor);
     public Length div(double factor);

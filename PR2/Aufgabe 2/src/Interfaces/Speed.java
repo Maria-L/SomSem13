@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author abl128
  */
-public interface Speed {
+public interface Speed extends PhysicsScalar {
     
     public double ms();
     public double kmh();
@@ -16,7 +16,6 @@ public interface Speed {
     public Speed inverse();
     public Speed add(Speed speed);
     public Speed sub(Speed speed);
-    
     
     public Speed mul(double factor);
     public Speed div(double factor);
