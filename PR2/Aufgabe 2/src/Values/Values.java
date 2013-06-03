@@ -32,11 +32,11 @@ public final class Values {
     static final double DEGINRAD            = 2.0 * Math.PI / 360.0;
     
     //Factorymethoden
-    public static lengthInM(double meters) {
+    public static Length lengthInM(double meters) {
         return LengthInM.valueOf(meters);
     }
     
-    public static lengthInFt(double feet) {
+    public static Length lengthInFt(double feet) {
         return LengthInM.valueOf(feet * FEET_IN_METER);
     }
 }
