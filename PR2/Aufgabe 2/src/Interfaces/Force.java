@@ -23,11 +23,6 @@ public interface Force {
     public Force div(double factor);
     public double div(Force force);
     
-    public Area mul(Length length);
-    public TimeDiff div(Speed speed);
-    public Speed div(TimeDiff time);
-    public Work mul(Force force);
-    
     public Mass div(Acc acc);
     public Acc div(Mass mass);
     public Work mul(Length length);
