@@ -10,4 +10,9 @@ package Interfaces;
  */
 public interface PhysicsScalar {
     
+    boolean isZero();
+     
+    boolean isValid();
+
+    
 }

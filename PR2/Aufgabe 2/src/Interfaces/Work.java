@@ -10,4 +10,22 @@ package Interfaces;
  */
 public interface Work {
     
+    public double j();
+    public double kj();
+
+    
+    public Work inverse();
+    public Work add(Work work);
+    public Work sub(Work work);
+    
+    
+    public Work mul(double factor);
+    public Work div(double factor);
+    public double div(Work work);
+    
+    public Force div(Length length);
+    public Length div(Force force);
+    public Power div(TimeDiff time);
+    
+    
 }
