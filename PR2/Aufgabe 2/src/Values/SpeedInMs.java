@@ -38,7 +38,7 @@ public class SpeedInMs implements Speed {
 
     @Override
     public Speed inverse() {
-        return valueOf(-ms);
+        return speedInMs(-ms);
     }
 
     @Override

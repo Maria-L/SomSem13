@@ -40,7 +40,7 @@ public class AngleInDeg implements Angle {
 
     @Override
     public Angle inverse() {
-        return valueOf(-this.degree);
+        return angleInDeg(-this.degree);
     }
     // End Getter
     

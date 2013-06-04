@@ -38,7 +38,7 @@ public class PowerInW implements Power{
 
     @Override
     public Power inverse() {
-        return valueOf(-w);
+        return powerInW(-w);
     }
     
     //

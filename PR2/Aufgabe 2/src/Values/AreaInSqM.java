@@ -44,7 +44,7 @@ public class AreaInSqM implements Area{
 
     @Override
     public Area inverse() {
-        return valueOf(-this.sqm);
+        return areaInSqM(-this.sqm);
     }
     
     //Methods
