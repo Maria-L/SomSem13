@@ -20,8 +20,8 @@ public interface TimeDiff extends PhysicsScalar, Comparable <TimeDiff> {
     public double year();
     
     public TimeDiff inverse();
-    public TimeDiff add(Length length);
-    public TimeDiff sub(Length length);
+    public TimeDiff add(TimeDiff timeDiff);
+    public TimeDiff sub(TimeDiff timeDiff);
     
     public TimeDiff mul(double factor);
     public TimeDiff div(double factor);
