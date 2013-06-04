@@ -29,4 +29,5 @@ public interface Length extends PhysicsScalar, Comparable <Length> {
     public TimeDiff div(Speed speed);
     public Speed div(TimeDiff time);
     public Work mul(Force force);
+    public Volume mul(Area area);
 }

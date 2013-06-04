@@ -14,11 +14,13 @@ public final class Values {
     private Values() {};
     
     //Potenzen
+    public static final double MICR = Math.pow(10,-6);
+    public static final double MILI = Math.pow(10,-3);
     public static final double CENT = Math.pow(10,-2);
-    public static final double DEZI = Math.pow(10,2);
+    public static final double DEZI = Math.pow(10,-1);
+    public static final double KILO = Math.pow(10,3);
+    public static final double FEET = 0.3048;
     
-    public static final double KILO = Math.pow(10,4);
-     
     
     //Einzigartige öffentliche Konstanten
     public static final Length ZEROLENGTH = lengthInM(0.0);
@@ -43,8 +45,26 @@ public final class Values {
     public static Length lengthInM(double meters) {
         return LengthInM.valueOf(meters);
     }
-    
-    public static Length lengthInFt(double feet) {
-        return LengthInM.valueOf(feet * FEET_IN_METER);
+
+    public static Length lengthInKm(double meters) {
+        return LengthInM.valueOf(meters * Values.KILO);
     }
+
+    public static Length lengthInDm(double meters) {
+        return LengthInM.valueOf(meters * Values.DEZI);
+    }
+
+    public static Length lengthInCm(double meters) {
+        return LengthInM.valueOf(meters * Values.CENT);
+    }
+
+    public static Length lengthInMm(double meters) {
+        return LengthInM.valueOf(meters * Values.MILI);
+    }
+    
+    public static Length lengthInFt(double meters) {
+        return LengthInM.valueOf(meters * Values.FEET);
+    }
+    
+    
 }
