@@ -89,12 +89,12 @@ public class TimeDiffInS implements TimeDiff{
 
     @Override
     public TimeDiff mul(double factor) {
-        return (s * factor);
+        return timeDiffInS(s * factor);
     }
 
     @Override
     public TimeDiff div(double factor) {
-        return (s/factor);
+        return timeDiffInS(s/factor);
     }
 
     @Override

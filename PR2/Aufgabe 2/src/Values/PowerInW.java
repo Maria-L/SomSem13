@@ -45,7 +45,7 @@ public class PowerInW implements Power{
 
     @Override
     public Power add(Power power) {
-        return powerInKw(kw + power.kw());
+        return powerInW(w + power.w());
     }
 
     @Override

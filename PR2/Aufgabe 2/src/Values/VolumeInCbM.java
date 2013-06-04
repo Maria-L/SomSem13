@@ -57,7 +57,7 @@ public class VolumeInCbM implements Volume {
 
     @Override
     public Volume mul(double factor) {
-        return (cbm * factor);
+        return volumeInCbM(cbm * factor);
     }
 
     @Override

@@ -28,13 +28,13 @@ public final class Values {
     public static final Angle ZEROANGLE = angleInRad(0.0);
     public static final Acc ZEROACC = ;
     public static final AngleSpeed ZEROANGLESPEED = ;
-    public static final Area ZEROAREA = ;
+    public static final Area ZEROAREA = areaInSqM(0.0);
     public static final Force ZEROFORCE = ;
     public static final Mass ZEROMASS = ;
-    public static final Power ZEROPOWER = ;
-    public static final Speed ZEROSPEED = ;
-    public static final TimeDiff ZEROTIMEDIFF = ;
-    public static final Volume ZEROVOLUME = ;
+    public static final Power ZEROPOWER = powerInW(0.0);
+    public static final Speed ZEROSPEED = speedInMs(0.0);
+    public static final TimeDiff ZEROTIMEDIFF = timeDiffInS(0.0);
+    public static final Volume ZEROVOLUME = volumenInCbM(0.0);
     public static final Work ZEROWORK = ;
     
     
@@ -47,7 +47,7 @@ public final class Values {
     static final double SIND                = 86400;
     static final double SINWEEK             = 604800;
     static final double SINMONTH            = 18144000;
-    static final double SINJEAR             = 217728000;
+    static final double SINYEAR             = 217728000;
     
     //Factorymethoden - Length
     public static Length lengthInM(double meters) {
@@ -76,11 +76,11 @@ public final class Values {
     
     //Factorymethoden - Angle
     public static Angle angleInRad(double degree) {
-        return AngleInRad.valueOf(degree * DEGINRAD);
+        return AngleInDeg.valueOf(degree * DEGINRAD);
     }
     
     public static Angle angleInDeg(double degree) {
-        return AngleInRad.valueOf(degree);
+        return AngleInDeg.valueOf(degree);
     }
     
     //Factorymethoden - Area
@@ -97,7 +97,7 @@ public final class Values {
     }
     
     //Factorymethoden - Power
-    public static Power powerInKw(double kw) {
+    public static Power powerInKw(double w) {
         return PowerInW.valueOf(w * KILO);
     }
     
@@ -148,15 +148,15 @@ public final class Values {
     }
     
     public static TimeDiff timeDiffInJear(double s) {
-        return TimeDiffInS.valueOf(s * SINJEAR);
+        return TimeDiffInS.valueOf(s * SINYEAR);
     }
     
     //Factorymethoden - Volumen
-    public static Volumen volumenInCbM(double cbm) {
-        return Volumen.valueOf(cbm);
+    public static Volume volumeInCbM(double cbm) {
+        return VolumeInCbM.valueOf(cbm);
     }
     
-    public static Volumen volumenInCbCm(double cbm) {
-        return Volumen.valueOf(cbm * CENT);
+    public static Volume volumeInCbCm(double cbm) {
+        return VolumeInCbM.valueOf(cbm * CENT);
     }
 }
