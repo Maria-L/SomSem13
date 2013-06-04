@@ -4,57 +4,77 @@
  */
 package Values;
 import Interfaces.*;
+import static Values.Values.*;
 
 /**
  *
  * @author Mooni
  */
 public class AreaInSqM implements Area{
+    
+    private final double sqm;
+    
+    //Creation
+    
+    private AreaInSqM(double sqm){
+        this.sqm = sqm;
+    }
+    
+    public static Area valueOf(double sqm){
+        return new AreaInSqM(sqm);
+    }
+    //End Creation
+    
+    // Methods
 
     @Override
     public double sqcm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (sqm / CENT);
     }
 
     @Override
     public double sqm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return sqm;
     }
 
     @Override
     public double sqkm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (sqm/KILO);
     }
 
     @Override
     public Area inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return valueOf(-this.sqm);
     }
+    
+    //Methods
 
     @Override
     public Area add(Area area) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return areaInSqM(this.sqm + area.sqm());
     }
 
     @Override
     public Area sub(Area area) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return areaInSqM(this.sqm - area.sqm());
     }
 
     @Override
     public Area mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return areaInSqM(this.sqm * factor);
     }
 
     @Override
     public Area div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return areaInSqM(this.sqm / factor);
     }
 
     @Override
     public double div(Area area) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (this.sqm / area.sqm());
     }
+    
+    // 
 
     @Override
     public Volume mul(Length length) {

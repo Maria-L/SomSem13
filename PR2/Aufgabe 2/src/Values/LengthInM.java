@@ -13,7 +13,7 @@ import static Values.Values.*;
  */
 public class LengthInM implements Length {
 
-    //Create Block
+    //Creation
     private final double meters;
 
     private LengthInM(double meters) {
@@ -23,7 +23,7 @@ public class LengthInM implements Length {
     public static Length valueOf(double meters) {
         return new LengthInM(meters);
     }
-    //End Create Block
+    //End Creation
     
     //Getter
     @Override

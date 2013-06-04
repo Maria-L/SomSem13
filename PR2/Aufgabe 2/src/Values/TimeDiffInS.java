@@ -4,87 +4,105 @@
  */
 package Values;
 import Interfaces.*;
+import static Values.Values.*;
 
 /**
  *
  * @author Mooni
  */
 public class TimeDiffInS implements TimeDiff{
+    
+    private final double s;
+    
+    //Creation
+    
+    private TimeDiffInS(double s){
+        this.s = s;
+    }
+    
+    public static TimeDiff valueOf(double s){
+        return new TimeDiffInS(s);
+    }
+    //End Creation
+    
+    //Methods
 
     @Override
     public double ns() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/NANO;
     }
 
     @Override
     public double ms() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/MILI;
     }
 
     @Override
     public double s() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s;
     }
 
     @Override
     public double m() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/SINM;
     }
 
     @Override
     public double h() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/SINH;
     }
 
     @Override
     public double d() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/SIND;
     }
 
     @Override
     public double week() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/SINWEEK;
     }
 
     @Override
     public double month() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/SINMONTH;
     }
 
     @Override
     public double year() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s/SINYEAR;
     }
 
     @Override
     public TimeDiff inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return timeDiffInS(-s) ;
     }
 
     @Override
-    public TimeDiff add(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public TimeDiff add(TimeDiff timeDiff) {
+        return timeDiffInS(s + timeDiff.s());
     }
 
     @Override
-    public TimeDiff sub(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public TimeDiff sub(TimeDiff timeDiff) {
+        return timeDiffInS(s - timeDiff.s());
     }
 
     @Override
     public TimeDiff mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (s * factor);
     }
 
     @Override
     public TimeDiff div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (s/factor);
     }
 
     @Override
     public double div(TimeDiff timediff) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (s / timediff.s());
     }
+    
+    //
 
     @Override
     public Length mul(Speed speed) {

@@ -4,52 +4,71 @@
  */
 package Values;
 import Interfaces.*;
+import static Values.Values.*;
 
 /**
  *
  * @author Mooni
  */
-public class PowerInKw implements Power{
+public class PowerInW implements Power{
+    
+    private final double w;
+    
+    //Creation
+    private PowerInW(double w){
+        this.w = w;
+    }
+    
+    public static Power valueOf(double w){
+        return new PowerInW(w);
+    }
+    //End Creation
+    
+    //Methods
 
     @Override
     public double w() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return w;
     }
 
     @Override
     public double kw() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return w/KILO;
     }
 
     @Override
     public Power inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return valueOf(-w);
     }
+    
+    //
 
     @Override
     public Power add(Power power) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return powerInKw(kw + power.kw());
     }
 
     @Override
     public Power sub(Power power) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return powerInW(w - power.w());
     }
 
     @Override
     public Power mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return powerInW(w * factor);
     }
 
     @Override
     public Power div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return powerInW(w/factor);
     }
 
     @Override
     public double div(Power power) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (w/power.w());
     }
+    
+    //
 
     @Override
     public Work mul(TimeDiff time) {
@@ -60,6 +79,8 @@ public class PowerInKw implements Power{
     public Force div(Speed speed) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    
 
     @Override
     public boolean isZero() {

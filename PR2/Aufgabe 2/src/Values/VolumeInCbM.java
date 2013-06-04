@@ -4,51 +4,72 @@
  */
 package Values;
 import Interfaces.*;
+import static Values.Values.*;
 
 /**
  *
  * @author Mooni
  */
 public class VolumeInCbM implements Volume {
+    
+    private final double cbm;
+    
+    //Creation
+    private VolumeInCbM(double cbm){
+        this.cbm = cbm;
+    }
+    
+    public static Volume valueOf(double cbm){
+        return new VolumeInCbM(cbm);
+    }
+    //End Creation
+    
+    //Getter
 
     @Override
     public double cubcm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return cbm/CENT;
     }
 
     @Override
     public double cubm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return cbm;
     }
 
     @Override
     public Volume inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return volumeInCbM(-cbm);
     }
+    
+    //End Getter
+    
+    // Methods
 
     @Override
     public Volume add(Volume volume) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return volumeInCbM(cbm + volume.cubm());
     }
 
     @Override
     public Volume sub(Volume volume) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return volumeInCbM(cbm - volume.cubm());
     }
 
     @Override
     public Volume mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (cbm * factor);
     }
 
     @Override
     public Volume div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return volumeInCbM(cbm / factor);
     }
+    
+    //
 
     @Override
     public double div(Volume volume) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (cbm / volume.cubm());
     }
 
     @Override
