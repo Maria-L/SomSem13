@@ -12,56 +12,77 @@ import static Values.Values.*;
  * @author abl128
  */
 public class MassInKg implements Mass{
+    
+    private final double kg;
+    
+    //Creation
+    private MassInKg(double kg){
+        this.kg = kg;
+    }
+    
+    public static Mass valueOf(double kg){
+        return MassInKg(kg);
+    }
+    
+    //End Creation
+    
+    //Getter
 
     @Override
     public double mg() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return kg/MICR;
     }
 
     @Override
     public double g() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return kg/MILI;
     }
 
     @Override
     public double kg() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return kg;
     }
 
     @Override
     public double t() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return kg/KILO;
     }
 
     @Override
     public Mass inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return valueOf(-kg);
     }
+    
+    //End Getter
+    
+    //Methods
 
     @Override
     public Mass add(Mass mass) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return massInKg(kg + mass.kg());
     }
 
     @Override
     public Mass sub(Mass mass) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return massInKg(kg - mass.kg());
     }
 
     @Override
     public Mass mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return massInKg(kg * factor);
     }
 
     @Override
     public Mass div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return massInKg(kg / factor);
     }
 
     @Override
     public double div(Mass mass) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (kg / mass.kg());
     }
+    
+    //
 
     @Override
     public Force mul(Acc acc) {

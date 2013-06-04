@@ -12,46 +12,67 @@ import static Values.Values.*;
  * @author abl128
  */
 public class WorkInJ implements Work {
+    
+    private final double j;
+    
+    //Creation
+    
+    private WorkInJ (double j){
+        this.j = j;
+    }
+    
+    public static Work valueOf(double j){
+        return new WorkInJ(j);
+    }
+    //End Creation
+    
+    //Getter
 
     @Override
     public double j() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return j;
     }
 
     @Override
     public double kj() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return j/KILO;
     }
 
     @Override
     public Work inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return valueOf(-j);
     }
+    
+    // End Getter
+    
+    //Methods
 
     @Override
     public Work add(Work work) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(j + work.j());
     }
 
     @Override
     public Work sub(Work work) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(j - work.j);
     }
 
     @Override
     public Work mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(j* factor);
     }
 
     @Override
     public Work div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(j / factor);
     }
 
     @Override
     public double div(Work work) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (j/work.j());
     }
+    
+    
 
     @Override
     public Force div(Length length) {
