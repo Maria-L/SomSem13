@@ -13,40 +13,62 @@ import static Values.Values.*;
  */
 public class AccInMss implements Acc {
 
+    
+    //Variablen
+    
+    private final double mss;
+    
+    //Creation
+    private AccInMss(double mss) {
+        this.mss = mss;
+    }
+    
+    public static AccInMss valueOf(double mss) {
+            return new AccInMss(mss);
+    }
+    //End Creation
+    
+    //Getter
+    
     @Override
     public double mss() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return mss;
     }
 
     @Override
     public Acc inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new accInMss(-mss);
     }
+    //End Getter
+    
+    //Methods
 
     @Override
     public Acc add(Acc acc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return accInMss(this.mss() + acc.mss());
     }
 
     @Override
     public Acc sub(Acc acc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return accInMss(this.mss() - acc.mss());
     }
 
     @Override
     public Acc mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return accInMss(this.mss() * acc.mss());
     }
 
     @Override
     public Acc div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return accInMss(this.mss() / factor);
     }
 
     @Override
     public double div(Acc acc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return accInMss(this.mss() / acc.mss());
     }
+    
+    //######
 
     @Override
     public Speed mul(TimeDiff time) {

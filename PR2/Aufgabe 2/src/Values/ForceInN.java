@@ -13,44 +13,54 @@ import static Values.Values.*;
  */
 public class ForceInN implements Force{
 
-    @Override
-    public double j() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    //Variablen
+    
+    private final double force;
+    
+    //Creation
+    private ForceInN(double force) {
+        this.force = force;
     }
-
+    
+    public static ForceInN valueOf(double force) {
+        return new ForceInN(force);
+    }
+    //End Creation
+    
+    //Getter
     @Override
-    public double kj() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public double force() {
+        return force;
     }
 
     @Override
     public Force inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(force);
     }
 
     @Override
     public Force add(Force force) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(this.force() + force.force());
     }
 
     @Override
     public Force sub(Force force) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(this.force() - force.force());
     }
 
     @Override
     public Force mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(this.force() * force.force());
     }
 
     @Override
     public Force div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(this.force() / factor);
     }
 
     @Override
     public double div(Force force) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(this.force() / force.force());
     }
 
     @Override
