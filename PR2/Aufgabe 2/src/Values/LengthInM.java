@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 package Values;
+
 import Interfaces.*;
+import static Values.Values.*;
 
 /**
  *
@@ -11,16 +13,19 @@ import Interfaces.*;
  */
 public class LengthInM implements Length {
 
-    double meters = 0.0;
+    //Create Block
+    private final double meters;
+
     private LengthInM(double meters) {
         this.meters = meters;
     }
-    
-    @Override
-    public double ft() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
+    public static Length valueOf(double meters) {
+        return new LengthInM(meters);
+    }
+    //End Create Block
+    
+    //Getter
     @Override
     public double m() {
         return meters;
@@ -28,53 +33,61 @@ public class LengthInM implements Length {
 
     @Override
     public double km() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (meters / Values.KILO);
     }
 
     @Override
     public double dm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (meters / Values.DEZI);
     }
 
     @Override
     public double cm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (meters / Values.CENT);
     }
 
     @Override
     public double mm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (meters / Values.MILI);
+    }
+    
+    @Override
+    public double ft() {
+        return (meters / Values.FEET);
     }
 
     @Override
     public Length inverse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(-this.m());
     }
-
+    //End Getter
+    
     @Override
     public Length add(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(this.m() + length.m());
     }
 
     @Override
     public Length sub(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(this.m() - length.m());
     }
 
     @Override
     public Length mul(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(this.m() * factor);
     }
 
     @Override
     public Length div(double factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(this.m() / factor);
     }
 
     @Override
     public double div(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (this.m() / length.m());
     }
+    
+    //##################################################
 
     @Override
     public Area mul(Length length) {
@@ -95,6 +108,12 @@ public class LengthInM implements Length {
     public Work mul(Force force) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    @Override
+    public Volume mul(Area area) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
 
     @Override
     public boolean isZero() {
