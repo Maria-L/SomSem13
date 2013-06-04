@@ -40,7 +40,7 @@ public class WorkInJ implements Work {
 
     @Override
     public Work inverse() {
-        return valueOf(-j);
+        return workInJ(-j);
     }
     
     // End Getter

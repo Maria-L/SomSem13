@@ -50,7 +50,7 @@ public class MassInKg implements Mass{
 
     @Override
     public Mass inverse() {
-        return valueOf(-kg);
+        return massInKg(-kg);
     }
     
     //End Getter
