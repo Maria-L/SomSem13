@@ -21,7 +21,7 @@ public class MassInKg implements Mass{
     }
     
     public static Mass valueOf(double kg){
-        return MassInKg(kg);
+        return new MassInKg(kg);
     }
     
     //End Creation

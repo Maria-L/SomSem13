@@ -50,7 +50,7 @@ public class ForceInN implements Force{
 
     @Override
     public Force mul(double factor) {
-        return forceInN(this.force() * force.force());
+        return forceInN(this.force() * factor);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ForceInN implements Force{
 
     @Override
     public double div(Force force) {
-        return forceInN(this.force() / force.force());
+        return this.force() / force.force();
     }
 
     @Override

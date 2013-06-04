@@ -54,7 +54,7 @@ public class WorkInJ implements Work {
 
     @Override
     public Work sub(Work work) {
-        return workInJ(j - work.j);
+        return workInJ(j - work.j());
     }
 
     @Override

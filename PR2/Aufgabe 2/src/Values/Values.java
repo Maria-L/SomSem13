@@ -26,16 +26,16 @@ public final class Values {
     //Einzigartige öffentliche Konstanten
     public static final Length ZEROLENGTH = lengthInM(0.0);
     public static final Angle ZEROANGLE = angleInRad(0.0);
-    public static final Acc ZEROACC = ;
-    public static final AngleSpeed ZEROANGLESPEED = ;
+    public static final Acc ZEROACC = accInMss(0.0);
+    //public static final AngleSpeed ZEROANGLESPEED = ;
     public static final Area ZEROAREA = areaInSqM(0.0);
-    public static final Force ZEROFORCE = ;
-    public static final Mass ZEROMASS = ;
+    public static final Force ZEROFORCE = forceInN(0.0);
+    public static final Mass ZEROMASS = massInKg(0.0);
     public static final Power ZEROPOWER = powerInW(0.0);
     public static final Speed ZEROSPEED = speedInMs(0.0);
     public static final TimeDiff ZEROTIMEDIFF = timeDiffInS(0.0);
-    public static final Volume ZEROVOLUME = volumenInCbM(0.0);
-    public static final Work ZEROWORK = ;
+    public static final Volume ZEROVOLUME = volumeInCbM(0.0);
+    public static final Work ZEROWORK = workInJ(0.0);
     
     
     //Package-Private Konversionskonstanten
@@ -158,5 +158,37 @@ public final class Values {
     
     public static Volume volumeInCbCm(double cbm) {
         return VolumeInCbM.valueOf(cbm * CENT);
+    }
+    
+    //Factorymethoden - Volumen
+    public static Acc accInMss(double mss) {
+        return AccInMss.valueOf(mss);
+    }
+    
+    //Factorymethoden - Force
+    public static Force forceInN(double force) {
+        return ForceInN.valueOf(force);
+    }
+    
+    //Factorymethoden - Mass
+    public static Mass massInKg(double kg) {
+        return MassInKg.valueOf(kg);
+    }
+    
+    public static Mass massInG(double kg) {
+        return MassInKg.valueOf(kg * MILI);
+    }
+    
+    public static Mass massInMg(double kg) {
+        return MassInKg.valueOf(kg * MICR);
+    }
+    
+    public static Mass massInT(double kg) {
+        return MassInKg.valueOf(kg * KILO);
+    }
+    
+    //Factorymethoden - Work
+    public static Work workInJ(double j) {
+        return WorkInJ.valueOf(j);
     }
 }

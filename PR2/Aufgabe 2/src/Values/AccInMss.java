@@ -37,7 +37,7 @@ public class AccInMss implements Acc {
 
     @Override
     public Acc inverse() {
-        return new accInMss(-mss);
+        return accInMss(-mss);
     }
     //End Getter
     
@@ -55,7 +55,7 @@ public class AccInMss implements Acc {
 
     @Override
     public Acc mul(double factor) {
-        return accInMss(this.mss() * acc.mss());
+        return accInMss(this.mss() * factor);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class AccInMss implements Acc {
 
     @Override
     public double div(Acc acc) {
-        return accInMss(this.mss() / acc.mss());
+        return this.mss() / acc.mss();
     }
     
     //######
