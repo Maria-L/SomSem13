@@ -75,7 +75,7 @@ public class AngleInDeg implements Angle {
 
     @Override
     public AngleSpeed div(TimeDiff time) {
-        return angleSpeedInDeg(degree/ time.s());
+        return angleSpeedInDegS(degree/ time.s());
     }
 
     @Override

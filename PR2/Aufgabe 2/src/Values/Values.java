@@ -27,7 +27,7 @@ public final class Values {
     public static final Length ZEROLENGTH = lengthInM(0.0);
     public static final Angle ZEROANGLE = angleInRad(0.0);
     public static final Acc ZEROACC = accInMss(0.0);
-    //public static final AngleSpeed ZEROANGLESPEED = ;
+    public static final AngleSpeed ZEROANGLESPEED = ;
     public static final Area ZEROAREA = areaInSqM(0.0);
     public static final Force ZEROFORCE = forceInN(0.0);
     public static final Mass ZEROMASS = massInKg(0.0);
@@ -190,5 +190,14 @@ public final class Values {
     //Factorymethoden - Work
     public static Work workInJ(double j) {
         return WorkInJ.valueOf(j);
+    }
+    
+    //Factorymethoden - AngleSpeed
+    public static AngleSpeed angleSpeedInDegS(double degS) {
+        return AngleSpeedInDegS.valueOf(degS);
+    }
+    
+    public static AngleSpeed angleSpeedInRadS(double degS) {
+        return AngleSpeedInDegS.valueOf(degS * DEGINRAD);
     }
 }
