@@ -14,6 +14,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static Values.TestConstant.*;
+import static Values.Values.*;
+import static Values.TestConstants.*;
 
 /**
  *
@@ -53,13 +55,7 @@ public class MassInKgTest {
      */
     @Test
     public void testG() {
-        System.out.println("g");
-        MassInKg instance = null;
-        double expResult = 0.0;
-        double result = instance.g();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(1000,mOneKg.g(),DELTA);
     }
 
     /**
@@ -67,13 +63,7 @@ public class MassInKgTest {
      */
     @Test
     public void testKg() {
-        System.out.println("kg");
-        MassInKg instance = null;
-        double expResult = 0.0;
-        double result = instance.kg();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(5,mFiveThG.kg(),DELTA);
     }
 
     /**
@@ -81,13 +71,7 @@ public class MassInKgTest {
      */
     @Test
     public void testT() {
-        System.out.println("t");
-        MassInKg instance = null;
-        double expResult = 0.0;
-        double result = instance.t();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(5,mFiveThKg.t(),DELTA);
     }
 
     /**
@@ -95,13 +79,7 @@ public class MassInKgTest {
      */
     @Test
     public void testInverse() {
-        System.out.println("inverse");
-        MassInKg instance = null;
-        Mass expResult = null;
-        Mass result = instance.inverse();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(-5000,mFiveThKg.inverse().kg(),DELTA);
     }
 
     /**
@@ -109,14 +87,7 @@ public class MassInKgTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
-        Mass mass = null;
-        MassInKg instance = null;
-        Mass expResult = null;
-        Mass result = instance.add(mass);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(mTenKg,mFiveKg.add(mFiveKg));
     }
 
     /**
@@ -124,14 +95,7 @@ public class MassInKgTest {
      */
     @Test
     public void testSub() {
-        System.out.println("sub");
-        Mass mass = null;
-        MassInKg instance = null;
-        Mass expResult = null;
-        Mass result = instance.sub(mass);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        SassertEquals(mFiveKg,mTenKg.sub(mFiveKg));
     }
 
     /**
@@ -139,14 +103,7 @@ public class MassInKgTest {
      */
     @Test
     public void testMul_double() {
-        System.out.println("mul");
-        double factor = 0.0;
-        MassInKg instance = null;
-        Mass expResult = null;
-        Mass result = instance.mul(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(mTenKg,mFiveKg.mul(TWO),DELTA);
     }
 
     /**
@@ -154,14 +111,7 @@ public class MassInKgTest {
      */
     @Test
     public void testDiv_double() {
-        System.out.println("div");
-        double factor = 0.0;
-        MassInKg instance = null;
-        Mass expResult = null;
-        Mass result = instance.div(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(mFiveKg,mTenKg.div(TWO),DELTA);
     }
 
     /**
@@ -169,14 +119,7 @@ public class MassInKgTest {
      */
     @Test
     public void testDiv_Mass() {
-        System.out.println("div");
-        Mass mass = null;
-        MassInKg instance = null;
-        double expResult = 0.0;
-        double result = instance.div(mass);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(TWO,mTenKg.div(mFiveKg),DELTA);
     }
 
     /**
@@ -184,14 +127,7 @@ public class MassInKgTest {
      */
     @Test
     public void testMul_Acc() {
-        System.out.println("mul");
-        Acc acc = null;
-        MassInKg instance = null;
-        Force expResult = null;
-        Force result = instance.mul(acc);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(fTenN,(mFiveKg.mul(aTwoMss)));
     }
 
     /**
@@ -199,13 +135,8 @@ public class MassInKgTest {
      */
     @Test
     public void testIsZero() {
-        System.out.println("isZero");
-        MassInKg instance = null;
-        boolean expResult = false;
-        boolean result = instance.isZero();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(mZeroKg.isZero());
+        assertTrue(!(mFiveKg.isZero()));
     }
 
     /**
@@ -213,13 +144,7 @@ public class MassInKgTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("isValid");
-        MassInKg instance = null;
-        boolean expResult = false;
-        boolean result = instance.isValid();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(mFiveKg.isValid());
     }
 
     /**
@@ -227,14 +152,9 @@ public class MassInKgTest {
      */
     @Test
     public void testCompareTo() {
-        System.out.println("compareTo");
-        Mass o = null;
-        MassInKg instance = null;
-        int expResult = 0;
-        int result = instance.compareTo(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(1,mFiveKg.compareTo(mOneKg));
+        assertEquals(0,mFiveKg.compareTo(mFiveKg));
+        assertEquals(-1,mFiveKg.compareTo(mTenKg));
     }
 
     /**
@@ -242,13 +162,7 @@ public class MassInKgTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        MassInKg instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(mFiveKg.equals(mFiveKg));
+        assertTrue(!(mFiveKg.equals(mTenKg)));
     }
 }

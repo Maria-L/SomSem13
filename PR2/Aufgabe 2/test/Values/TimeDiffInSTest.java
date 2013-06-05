@@ -144,7 +144,7 @@ public class TimeDiffInSTest {
      */
     @Test
     public void testMul_double() {
-        assertEquals(tTwoS,tOneS.mul(TWO));
+        assertEquals(tTwoS,tOneS.mul(TWO),DELTA);
     }
 
     /**
@@ -152,7 +152,7 @@ public class TimeDiffInSTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(tOneS,tTwoS.div(TWO));
+        assertEquals(tOneS,tTwoS.div(TWO),DELTA);
     }
 
     /**

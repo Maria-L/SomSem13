@@ -93,7 +93,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(vFiveCuM,vTenCuM.div(TWO));
+        assertEquals(vFiveCuM,vTenCuM.div(TWO),DELTA);
     }
 
     /**
