@@ -14,6 +14,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static Values.Values.*;
+import static Values.TestConstants.*;
 
 /**
  *
@@ -40,32 +42,13 @@ public class SpeedInMsTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of valueOf method, of class SpeedInMs.
-     */
-    @Test
-    public void testValueOf() {
-        System.out.println("valueOf");
-        double ms = 0.0;
-        Speed expResult = null;
-        Speed result = SpeedInMs.valueOf(ms);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of ms method, of class SpeedInMs.
      */
     @Test
     public void testMs() {
-        System.out.println("ms");
-        SpeedInMs instance = null;
-        double expResult = 0.0;
-        double result = instance.ms();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(s3SixKmh,sOneMs);
     }
 
     /**
@@ -73,13 +56,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testKmh() {
-        System.out.println("kmh");
-        SpeedInMs instance = null;
-        double expResult = 0.0;
-        double result = instance.kmh();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(sOneMs,s3SixKmh);
     }
 
     /**
@@ -87,13 +64,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testInverse() {
-        System.out.println("inverse");
-        SpeedInMs instance = null;
-        Speed expResult = null;
-        Speed result = instance.inverse();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(-5.0,sFiveMs.inverse().ms(),DELTA);
     }
 
     /**
@@ -101,14 +72,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
-        Speed speed = null;
-        SpeedInMs instance = null;
-        Speed expResult = null;
-        Speed result = instance.add(speed);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(sTenMs,sFiveMs.add(sFiveMs));
     }
 
     /**
@@ -116,14 +80,8 @@ public class SpeedInMsTest {
      */
     @Test
     public void testSub() {
-        System.out.println("sub");
-        Speed speed = null;
-        SpeedInMs instance = null;
-        Speed expResult = null;
-        Speed result = instance.sub(speed);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(sFiveMs,sTenMs.sub(sFiveMs));
+
     }
 
     /**
@@ -131,14 +89,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testMul_double() {
-        System.out.println("mul");
-        double factor = 0.0;
-        SpeedInMs instance = null;
-        Speed expResult = null;
-        Speed result = instance.mul(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(sTenMs,sTwoMs.mul(sFiveMs),DELTA);
     }
 
     /**
@@ -146,14 +97,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testDiv_double() {
-        System.out.println("div");
-        double factor = 0.0;
-        SpeedInMs instance = null;
-        Speed expResult = null;
-        Speed result = instance.div(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(sTwoMs,sTenMs.div(sFiveMs),DELTA);
     }
 
     /**
@@ -161,14 +105,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testDiv_Speed() {
-        System.out.println("div");
-        Speed speed = null;
-        SpeedInMs instance = null;
-        double expResult = 0.0;
-        double result = instance.div(speed);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(TWO,sTenMs.div(sFiveMs),DELTA);
     }
 
     /**
@@ -176,14 +113,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testMul_TimeDiff() {
-        System.out.println("mul");
-        TimeDiff time = null;
-        SpeedInMs instance = null;
-        Length expResult = null;
-        Length result = instance.mul(time);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(lTenM,sFiveMs.mul(tTwoS));
     }
 
     /**
@@ -191,14 +121,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testDiv_TimeDiff() {
-        System.out.println("div");
-        TimeDiff time = null;
-        SpeedInMs instance = null;
-        Acc expResult = null;
-        Acc result = instance.div(time);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(aTwoMss,sTenMs.div(tFiveS));
     }
 
     /**
@@ -206,28 +129,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testDiv_Acc() {
-        System.out.println("div");
-        Acc acc = null;
-        SpeedInMs instance = null;
-        TimeDiff expResult = null;
-        TimeDiff result = instance.div(acc);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toStringInKmh method, of class SpeedInMs.
-     */
-    @Test
-    public void testToStringInKmh() {
-        System.out.println("toStringInKmh");
-        SpeedInMs instance = null;
-        String expResult = "";
-        String result = instance.toStringInKmh();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(tFiveS,sTenMs.div(aTwoMss));
     }
 
     /**
@@ -235,13 +137,8 @@ public class SpeedInMsTest {
      */
     @Test
     public void testIsZero() {
-        System.out.println("isZero");
-        SpeedInMs instance = null;
-        boolean expResult = false;
-        boolean result = instance.isZero();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(ZERO_SPEED.isZero());
+        assertTrue(!(sFiveMs.isZero()));
     }
 
     /**
@@ -249,13 +146,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("isValid");
-        SpeedInMs instance = null;
-        boolean expResult = false;
-        boolean result = instance.isValid();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(sFiveMs.isValid());
     }
 
     /**
@@ -263,14 +154,9 @@ public class SpeedInMsTest {
      */
     @Test
     public void testCompareTo() {
-        System.out.println("compareTo");
-        Speed o = null;
-        SpeedInMs instance = null;
-        int expResult = 0;
-        int result = instance.compareTo(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(1,sTenMs.compareTo(sFiveMs));
+        assertEquals(0,sFiveMs.compareTo(sFiveMs));
+        assertEquals(-1,sFiveMs.compareTo(sTenMs));
     }
 
     /**
@@ -278,13 +164,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        SpeedInMs instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(sTenMs.equals(sTenMs));
+        assertTrue(!(sTenMs.equals(sFiveMs)));
     }
 }
