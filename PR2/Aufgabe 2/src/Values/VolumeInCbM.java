@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class VolumeInCbM implements Volume {
+public class VolumeInCbM implements Volume, Comparable <Volume> {
     
     private final double cbm;
     
@@ -97,4 +97,10 @@ public class VolumeInCbM implements Volume {
         return Double.compare(cbm, o.cubm());
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Volume)) return false;
+        return this.compareTo((Volume)o) == 0;
+    }
 }

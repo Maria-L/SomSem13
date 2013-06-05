@@ -19,7 +19,8 @@ public final class Values {
     public static final double MILI = Math.pow(10,-3);
     public static final double CENT = Math.pow(10,-2);
     public static final double DEZI = Math.pow(10,-1);
-    public static final double KILO = Math.pow(10,3);
+    public static final double KILO = Math.pow(10, 3);
+    public static final double GIGA = Math.pow(10, 6);
     public static final double FEET = 0.3048;
     
     

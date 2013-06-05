@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class ForceInN implements Force{
+public class ForceInN implements Force, Comparable <Force>{
 
     //Variablen
     
@@ -90,7 +90,13 @@ public class ForceInN implements Force{
 
     @Override
     public int compareTo(Force o) {
-        return(Double.compare(o.force(), force()));
+        return(Double.compare(force(), o.force()));
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Force)) return false;
+        return this.compareTo((Force)o) == 0;
+    }
 }

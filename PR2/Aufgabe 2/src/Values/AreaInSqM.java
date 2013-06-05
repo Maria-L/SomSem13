@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class AreaInSqM implements Area {
+public class AreaInSqM implements Area, Comparable <Area> {
 
     private final double sqm;
 
@@ -95,6 +95,13 @@ public class AreaInSqM implements Area {
 
     @Override
     public int compareTo(Area o) {
-        return (Double.compare(o.sqm(), sqm()));
+        return (Double.compare(sqm(), o.sqm()));
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Area)) return false;
+        return this.compareTo((Area)o) == 0;
     }
 }

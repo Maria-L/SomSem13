@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class AngleSpeedInDegS implements AngleSpeed {
+public class AngleSpeedInDegS implements AngleSpeed, Comparable <AngleSpeed>{
     
     //Creation
     private final double degS;
@@ -84,7 +84,13 @@ public class AngleSpeedInDegS implements AngleSpeed {
 
     @Override
     public int compareTo(AngleSpeed o) {
-        return(Double.compare(o.degS(), degS()));
+        return(Double.compare(degS(), o.degS()));
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof AngleSpeed)) return false;
+        return this.compareTo((AngleSpeed)o) == 0;
+    }
 }

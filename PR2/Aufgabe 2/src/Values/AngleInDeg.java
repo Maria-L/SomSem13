@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class AngleInDeg implements Angle {
+public class AngleInDeg implements Angle, Comparable <Angle> {
     
     //Variablen
     
@@ -90,6 +90,13 @@ public class AngleInDeg implements Angle {
 
     @Override
     public int compareTo(Angle o) {
-        return Double.compare(o.deg(), deg());
+        return Double.compare(deg(), o.deg());
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Angle)) return false;
+        return this.compareTo((Angle)o) == 0;
     }
 }

@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class AccInMss implements Acc {
+public class AccInMss implements Acc, Comparable <Acc> {
 
     
     //Variablen
@@ -92,7 +92,14 @@ public class AccInMss implements Acc {
 
     @Override
     public int compareTo(Acc o) {
-        return Double.compare(o.mss(), mss());
+        return Double.compare(mss(), o.mss());
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Acc)) return false;
+        return this.compareTo((Acc)o) == 0;
     }
     
 }

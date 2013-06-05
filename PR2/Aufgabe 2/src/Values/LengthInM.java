@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class LengthInM implements Length {
+public class LengthInM implements Length, Comparable <Length> {
 
     //Creation
     private final double meters;
@@ -127,8 +127,13 @@ public class LengthInM implements Length {
 
     @Override
     public int compareTo(Length o) {
-        return(Double.compare(o.m(), m()));
+        return(Double.compare(m(), o.m()));
     }
 
-    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Length)) return false;
+        return this.compareTo((Length)o) == 0;
+    }
 }

@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class MassInKg implements Mass{
+public class MassInKg implements Mass, Comparable <Mass>{
     
     private final double kg;
     
@@ -101,7 +101,14 @@ public class MassInKg implements Mass{
 
     @Override
     public int compareTo(Mass o) {
-        return(Double.compare(o.kg(), kg()));
+        return(Double.compare(kg(), o.kg()));
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Mass)) return false;
+        return this.compareTo((Mass)o) == 0;
     }
     
 }

@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class WorkInJ implements Work {
+public class WorkInJ implements Work, Comparable <Work> {
     
     private final double j;
     
@@ -100,6 +100,13 @@ public class WorkInJ implements Work {
     @Override
     public int compareTo(Work o) {
         return Double.compare(j, o.j());
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Work)) return false;
+        return this.compareTo((Work)o) == 0;
     }
     
 }

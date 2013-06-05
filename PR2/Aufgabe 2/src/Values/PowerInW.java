@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class PowerInW implements Power{
+public class PowerInW implements Power, Comparable <Power>{
     
     private final double w;
     
@@ -94,6 +94,13 @@ public class PowerInW implements Power{
     @Override
     public int compareTo(Power o) {
         return Double.compare(w, o.w());
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Power)) return false;
+        return this.compareTo((Power)o) == 0;
     }
     
 }

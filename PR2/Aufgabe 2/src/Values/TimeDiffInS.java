@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class TimeDiffInS implements TimeDiff{
+public class TimeDiffInS implements TimeDiff, Comparable <TimeDiff>{
     
     private final double s;
     
@@ -134,4 +134,10 @@ public class TimeDiffInS implements TimeDiff{
         return Double.compare(s, o.s());
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof TimeDiff)) return false;
+        return this.compareTo((TimeDiff)o) == 0;
+    }
 }

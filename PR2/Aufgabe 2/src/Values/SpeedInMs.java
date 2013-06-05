@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class SpeedInMs implements Speed {
+public class SpeedInMs implements Speed, Comparable <Speed> {
     
     private final double ms;
     
@@ -103,4 +103,10 @@ public class SpeedInMs implements Speed {
         return Double.compare(ms, o.ms());
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Speed)) return false;
+        return this.compareTo((Speed)o) == 0;
+    }
 }
