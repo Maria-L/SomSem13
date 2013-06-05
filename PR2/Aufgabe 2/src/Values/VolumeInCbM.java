@@ -74,17 +74,17 @@ public class VolumeInCbM implements Volume {
 
     @Override
     public Area div(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return areaInSqM(cbm/length.m());
     }
 
     @Override
     public Length div(Area sqmeters) {
-        throw new UnsupportedOperationException("Not supported yet.");
+     return lengthInM(cbm/sqmeters.sqm());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return cbm == 0.0;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class VolumeInCbM implements Volume {
 
     @Override
     public int compareTo(Volume o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.compare(cbm, o.cubm());
     }
     
 }

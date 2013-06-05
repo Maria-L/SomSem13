@@ -72,19 +72,18 @@ public class PowerInW implements Power{
 
     @Override
     public Work mul(TimeDiff time) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(w*time.s());
     }
 
     @Override
     public Force div(Speed speed) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(w/speed.ms());
     }
-    
     
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return w == 0.0;
     }
 
     @Override
@@ -94,7 +93,7 @@ public class PowerInW implements Power{
 
     @Override
     public int compareTo(Power o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.compare(w, o.w());
     }
     
 }

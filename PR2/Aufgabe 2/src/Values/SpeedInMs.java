@@ -70,27 +70,27 @@ public class SpeedInMs implements Speed {
 
     @Override
     public Length mul(TimeDiff time) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(ms*time.s());
     }
 
     @Override
     public Acc div(TimeDiff time) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return accInMss(ms/time.s());
     }
 
     @Override
     public TimeDiff div(Acc acc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return timeDiffInS(ms/acc.mss());
     }
 
     @Override
     public String toStringInKmh() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.toString(ms);
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ms == 0.0;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class SpeedInMs implements Speed {
 
     @Override
     public int compareTo(Speed o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.compare(ms, o.ms());
     }
     
 }

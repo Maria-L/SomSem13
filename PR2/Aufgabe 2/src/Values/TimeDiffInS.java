@@ -106,22 +106,22 @@ public class TimeDiffInS implements TimeDiff{
 
     @Override
     public Length mul(Speed speed) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(s*speed.ms());
     }
 
     @Override
     public Speed mul(Acc acc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return speedInMs(s*acc.mss());
     }
 
     @Override
     public Work mul(Power power) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(s*power.w());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s == 0.0;
     }
 
     @Override
@@ -131,7 +131,7 @@ public class TimeDiffInS implements TimeDiff{
 
     @Override
     public int compareTo(TimeDiff o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.compare(s, o.s());
     }
     
 }

@@ -76,32 +76,32 @@ public class WorkInJ implements Work {
 
     @Override
     public Force div(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(j/ length.m());
     }
 
     @Override
     public Length div(Force force) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(j/force.force());
     }
 
     @Override
     public Power div(TimeDiff time) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return powerInW(j/time.s());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return j == 0.0;
     }
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return j >= 0.0;
     }
 
     @Override
     public int compareTo(Work o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.compare(j, o.j());
     }
     
 }
