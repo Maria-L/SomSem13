@@ -75,12 +75,12 @@ public class AngleInDeg implements Angle {
 
     @Override
     public AngleSpeed div(TimeDiff time) {
-        return angleSpeedInDegS(degree/ time.s());
+        return angleSpeedInDegS(degree / time.s());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return deg() == 0.0;
     }
 
     @Override
@@ -90,7 +90,6 @@ public class AngleInDeg implements Angle {
 
     @Override
     public int compareTo(Angle o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.compare(o.deg(), deg());
     }
-    
 }

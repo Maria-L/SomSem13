@@ -65,22 +65,22 @@ public class ForceInN implements Force{
 
     @Override
     public Mass div(Acc acc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return massInKg(force() / acc.mss());
     }
 
     @Override
     public Acc div(Mass mass) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return accInMss(force() / mass.kg());
     }
 
     @Override
     public Work mul(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(force() * length.m());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return force() == 0.0;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class ForceInN implements Force{
 
     @Override
     public int compareTo(Force o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return(Double.compare(o.force(), force()));
     }
     
 }

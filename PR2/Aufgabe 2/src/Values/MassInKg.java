@@ -86,12 +86,12 @@ public class MassInKg implements Mass{
 
     @Override
     public Force mul(Acc acc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(kg() * acc.mss());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return kg() == 0.0;
     }
 
     @Override
@@ -101,7 +101,7 @@ public class MassInKg implements Mass{
 
     @Override
     public int compareTo(Mass o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return(Double.compare(o.kg(), kg()));
     }
     
 }

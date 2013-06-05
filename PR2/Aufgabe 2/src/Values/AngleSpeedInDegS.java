@@ -69,12 +69,12 @@ public class AngleSpeedInDegS implements AngleSpeed {
 
     @Override
     public Angle mul(TimeDiff time) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return angleInDeg(degS() * time.s());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return degS() == 0.0;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class AngleSpeedInDegS implements AngleSpeed {
 
     @Override
     public int compareTo(AngleSpeed o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return(Double.compare(o.degS(), degS()));
     }
     
 }

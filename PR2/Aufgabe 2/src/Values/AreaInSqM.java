@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package Values;
+
 import Interfaces.*;
 import static Values.Values.*;
 
@@ -10,23 +11,21 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class AreaInSqM implements Area{
-    
+public class AreaInSqM implements Area {
+
     private final double sqm;
-    
+
     //Creation
-    
-    private AreaInSqM(double sqm){
+    private AreaInSqM(double sqm) {
         this.sqm = sqm;
     }
-    
-    public static Area valueOf(double sqm){
+
+    public static Area valueOf(double sqm) {
         return new AreaInSqM(sqm);
     }
     //End Creation
-    
-    // Methods
 
+    // Methods
     @Override
     public double sqcm() {
         return (sqm / CENT);
@@ -39,16 +38,15 @@ public class AreaInSqM implements Area{
 
     @Override
     public double sqkm() {
-        return (sqm/KILO);
+        return (sqm / KILO);
     }
 
     @Override
     public Area inverse() {
         return areaInSqM(-this.sqm);
     }
-    
-    //Methods
 
+    //Methods
     @Override
     public Area add(Area area) {
         return areaInSqM(this.sqm + area.sqm());
@@ -73,22 +71,21 @@ public class AreaInSqM implements Area{
     public double div(Area area) {
         return (this.sqm / area.sqm());
     }
-    
-    // 
 
+    // 
     @Override
     public Volume mul(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return volumeInCbM(sqm() * length.m());
     }
 
     @Override
     public Length div(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lengthInM(sqm() / length.m());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return sqm() == 0.0;
     }
 
     @Override
@@ -98,7 +95,6 @@ public class AreaInSqM implements Area{
 
     @Override
     public int compareTo(Area o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (Double.compare(o.sqm(), sqm()));
     }
-    
 }
