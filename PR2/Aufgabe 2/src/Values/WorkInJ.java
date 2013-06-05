@@ -79,7 +79,7 @@ public class WorkInJ implements Work, Comparable <Work> {
 
     @Override
     public Length div(Force force) {
-        return lengthInM(j/force.force());
+        return lengthInM(j/force.n());
     }
 
     @Override

@@ -26,12 +26,12 @@ public class AngleSpeedInDegS implements AngleSpeed, Comparable <AngleSpeed>{
     
     //Getter
     @Override
-    public double radS() {
+    public double rads() {
         return (degS / Values.DEGINRAD);
     }
 
     @Override
-    public double degS() {
+    public double degs() {
         return degS;
     }
     //End Getter
@@ -44,37 +44,37 @@ public class AngleSpeedInDegS implements AngleSpeed, Comparable <AngleSpeed>{
 
     @Override
     public AngleSpeed add(AngleSpeed angleSpeed) {
-        return angleSpeedInDegS(this.degS() + angleSpeed.degS());
+        return angleSpeedInDegS(this.degs() + angleSpeed.degs());
     }
 
     @Override
     public AngleSpeed sub(AngleSpeed angleSpeed) {
-        return angleSpeedInDegS(this.degS() - angleSpeed.degS());
+        return angleSpeedInDegS(this.degs() - angleSpeed.degs());
     }
 
     @Override
     public AngleSpeed mul(double factor) {
-        return angleSpeedInDegS(this.degS() * factor);
+        return angleSpeedInDegS(this.degs() * factor);
     }
 
     @Override
     public AngleSpeed div(double factor) {
-        return angleSpeedInDegS(this.degS() / factor);
+        return angleSpeedInDegS(this.degs() / factor);
     }
 
     @Override
     public double div(AngleSpeed angleSpeed) {
-        return this.degS() / angleSpeed.degS();
+        return this.degs() / angleSpeed.degs();
     }
 
     @Override
     public Angle mul(TimeDiff time) {
-        return angleInDeg(degS() * time.s());
+        return angleInDeg(degs() * time.s());
     }
 
     @Override
     public boolean isZero() {
-        return degS() == 0.0;
+        return degs() == 0.0;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class AngleSpeedInDegS implements AngleSpeed, Comparable <AngleSpeed>{
 
     @Override
     public int compareTo(AngleSpeed o) {
-        return(Double.compare(degS(), o.degS()));
+        return(Double.compare(degs(), o.degs()));
     }
     
     @Override

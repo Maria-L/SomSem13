@@ -15,11 +15,11 @@ public class ForceInN implements Force, Comparable <Force>{
 
     //Variablen
     
-    private final double force;
+    private final double n;
     
     //Creation
     private ForceInN(double force) {
-        this.force = force;
+        this.n = force;
     }
     
     public static ForceInN valueOf(double force) {
@@ -29,58 +29,58 @@ public class ForceInN implements Force, Comparable <Force>{
     
     //Getter
     @Override
-    public double force() {
-        return force;
+    public double n() {
+        return n;
     }
 
     @Override
     public Force inverse() {
-        return forceInN(force);
+        return forceInN(n);
     }
 
     @Override
     public Force add(Force force) {
-        return forceInN(this.force() + force.force());
+        return forceInN(this.n() + force.n());
     }
 
     @Override
     public Force sub(Force force) {
-        return forceInN(this.force() - force.force());
+        return forceInN(this.n() - force.n());
     }
 
     @Override
     public Force mul(double factor) {
-        return forceInN(this.force() * factor);
+        return forceInN(this.n() * factor);
     }
 
     @Override
     public Force div(double factor) {
-        return forceInN(this.force() / factor);
+        return forceInN(this.n() / factor);
     }
 
     @Override
     public double div(Force force) {
-        return this.force() / force.force();
+        return this.n() / force.n();
     }
 
     @Override
     public Mass div(Acc acc) {
-        return massInKg(force() / acc.mss());
+        return massInKg(n() / acc.mss());
     }
 
     @Override
     public Acc div(Mass mass) {
-        return accInMss(force() / mass.kg());
+        return accInMss(n() / mass.kg());
     }
 
     @Override
     public Work mul(Length length) {
-        return workInJ(force() * length.m());
+        return workInJ(n() * length.m());
     }
 
     @Override
     public boolean isZero() {
-        return force() == 0.0;
+        return n() == 0.0;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class ForceInN implements Force, Comparable <Force>{
 
     @Override
     public int compareTo(Force o) {
-        return(Double.compare(force(), o.force()));
+        return(Double.compare(n(), o.n()));
     }
     
     @Override

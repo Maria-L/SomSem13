@@ -106,7 +106,7 @@ public class LengthInM implements Length, Comparable <Length> {
 
     @Override
     public Work mul(Force force) {
-        return workInJ(m() * force.force());
+        return workInJ(m() * force.n());
     }
     
     @Override

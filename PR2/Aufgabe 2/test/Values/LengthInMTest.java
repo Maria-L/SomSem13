@@ -18,6 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static Values.TestConstant.*;
+import static Values.Values.*;
 
 /**
  *
