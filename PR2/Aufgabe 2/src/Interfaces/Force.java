@@ -10,7 +10,7 @@ package Interfaces;
  */
 public interface Force extends PhysicsScalar, Comparable <Force> {
     
-    public double force();
+    public double n();
 
     public Force inverse();
     public Force add(Force force);

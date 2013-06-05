@@ -93,13 +93,13 @@ public class TestConstant {
     static Volume vOneThCuM= volumeInCbM(1000.0);
     static Volume vFiveGigaCuM= volumeInCbM(5*GIGA);
      
-    static Angle an180Grad= angleInDeg(180);
-    static Angle an360Grad= angleInDeg(360);
-    static Angle an180GradInRad= angleInDeg(3.1415926535898);
+    static Angle an180Deg= angleInDeg(180);
+    static Angle an360Deg= angleInDeg(360);
+    static Angle an180DegInRad= angleInDeg(Math.PI);
      
-    static AngleSpeed ans180GradS= angleSpeedInDegS(180);
-    static AngleSpeed ans360GradS= angleSpeedInDegS(360);
-    static AngleSpeed ans180GradInRadS= angleSpeedInRadS(3.1415926535898);
+    static AngleSpeed ans180DegS= angleSpeedInDegS(180);
+    static AngleSpeed ans360DegS= angleSpeedInDegS(360);
+    static AngleSpeed ans180DegInRadS= angleSpeedInRadS(Math.PI);
      
      
      

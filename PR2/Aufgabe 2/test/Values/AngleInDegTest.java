@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static Values.TestConstant.*;
+import static Values.Values.*;
 
 /**
  *
@@ -40,31 +42,11 @@ public class AngleInDegTest {
     }
 
     /**
-     * Test of valueOf method, of class AngleInDeg.
-     */
-    @Test
-    public void testValueOf() {
-        System.out.println("valueOf");
-        double degree = 0.0;
-        Angle expResult = null;
-        Angle result = AngleInDeg.valueOf(degree);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of rad method, of class AngleInDeg.
      */
     @Test
     public void testRad() {
-        System.out.println("rad");
-        AngleInDeg instance = null;
-        double expResult = 0.0;
-        double result = instance.rad();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(Math.PI,an180Deg.rad(),DELTA);
     }
 
     /**
@@ -72,13 +54,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testDeg() {
-        System.out.println("deg");
-        AngleInDeg instance = null;
-        double expResult = 0.0;
-        double result = instance.deg();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(180,an180DegInRad.deg(),DELTA);
     }
 
     /**
@@ -86,13 +62,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testInverse() {
-        System.out.println("inverse");
-        AngleInDeg instance = null;
-        Angle expResult = null;
-        Angle result = instance.inverse();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(-180,an180Deg.inverse().deg(),DELTA);
     }
 
     /**
@@ -100,14 +70,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
-        Angle angle = null;
-        AngleInDeg instance = null;
-        Angle expResult = null;
-        Angle result = instance.add(angle);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(an360Deg,an180Deg.add(an180Deg));
     }
 
     /**
@@ -115,14 +78,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testSub() {
-        System.out.println("sub");
-        Angle angle = null;
-        AngleInDeg instance = null;
-        Angle expResult = null;
-        Angle result = instance.sub(angle);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(an180Deg,an360Deg.sub(an180Deg));
     }
 
     /**
@@ -130,14 +86,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testMul() {
-        System.out.println("mul");
-        double factor = 0.0;
-        AngleInDeg instance = null;
-        Angle expResult = null;
-        Angle result = instance.mul(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(an360Deg,an180Deg.mul(TWO));
     }
 
     /**
@@ -145,14 +94,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testDiv_double() {
-        System.out.println("div");
-        double factor = 0.0;
-        AngleInDeg instance = null;
-        Angle expResult = null;
-        Angle result = instance.div(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(an180Deg,an360Deg.div(TWO));
     }
 
     /**
@@ -160,14 +102,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testDiv_Angle() {
-        System.out.println("div");
-        Angle angle = null;
-        AngleInDeg instance = null;
-        double expResult = 0.0;
-        double result = instance.div(angle);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(TWO,an360Deg.div(an180Deg),DELTA);
     }
 
     /**
@@ -175,14 +110,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testDiv_TimeDiff() {
-        System.out.println("div");
-        TimeDiff time = null;
-        AngleInDeg instance = null;
-        AngleSpeed expResult = null;
-        AngleSpeed result = instance.div(time);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(ans180DegS,an360Deg.div(tTwoS));
     }
 
     /**
@@ -190,13 +118,8 @@ public class AngleInDegTest {
      */
     @Test
     public void testIsZero() {
-        System.out.println("isZero");
-        AngleInDeg instance = null;
-        boolean expResult = false;
-        boolean result = instance.isZero();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(ZEROANGLE.isZero());
+        assertTrue(!(an180Deg.isZero()));
     }
 
     /**
@@ -204,13 +127,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("isValid");
-        AngleInDeg instance = null;
-        boolean expResult = false;
-        boolean result = instance.isValid();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(an180Deg.isValid());
     }
 
     /**
@@ -218,14 +135,9 @@ public class AngleInDegTest {
      */
     @Test
     public void testCompareTo() {
-        System.out.println("compareTo");
-        Angle o = null;
-        AngleInDeg instance = null;
-        int expResult = 0;
-        int result = instance.compareTo(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(1,an360Deg.compareTo(an180Deg));
+        assertEquals(0,an180Deg.compareTo(an180Deg));
+        assertEquals(-1,an180Deg.compareTo(an360Deg));
     }
 
     /**
@@ -233,13 +145,7 @@ public class AngleInDegTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        AngleInDeg instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(an180Deg.equals(an180Deg));
+        assertTrue(!(an180Deg.equals(an360Deg)));
     }
 }

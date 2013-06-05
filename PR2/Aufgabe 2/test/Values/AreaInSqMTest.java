@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static Values.TestConstant.*;
+import static Values.Values.*;
 
 /**
  *
@@ -40,31 +42,11 @@ public class AreaInSqMTest {
     }
 
     /**
-     * Test of valueOf method, of class AreaInSqM.
-     */
-    @Test
-    public void testValueOf() {
-        System.out.println("valueOf");
-        double sqm = 0.0;
-        Area expResult = null;
-        Area result = AreaInSqM.valueOf(sqm);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of sqcm method, of class AreaInSqM.
      */
     @Test
     public void testSqcm() {
-        System.out.println("sqcm");
-        AreaInSqM instance = null;
-        double expResult = 0.0;
-        double result = instance.sqcm();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(50000,aFiveSqM.sqcm(),DELTA);
     }
 
     /**
@@ -72,13 +54,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testSqm() {
-        System.out.println("sqm");
-        AreaInSqM instance = null;
-        double expResult = 0.0;
-        double result = instance.sqm();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(5,aFive0000SqCm.sqm(),DELTA);
     }
 
     /**
@@ -86,13 +62,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testSqkm() {
-        System.out.println("sqkm");
-        AreaInSqM instance = null;
-        double expResult = 0.0;
-        double result = instance.sqkm();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(0.000005,aFiveSqM.sqkm(),DELTA);
     }
 
     /**
@@ -100,13 +70,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testInverse() {
-        System.out.println("inverse");
-        AreaInSqM instance = null;
-        Area expResult = null;
-        Area result = instance.inverse();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(-5.0,aFiveSqM.inverse().sqm(),DELTA);
     }
 
     /**
@@ -114,14 +78,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
-        Area area = null;
-        AreaInSqM instance = null;
-        Area expResult = null;
-        Area result = instance.add(area);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(aTenSqM,aFiveSqM.add(aFiveSqM));
     }
 
     /**
@@ -129,14 +86,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testSub() {
-        System.out.println("sub");
-        Area area = null;
-        AreaInSqM instance = null;
-        Area expResult = null;
-        Area result = instance.sub(area);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(aFiveSqM,aTenSqM.sub(aFiveSqM));
     }
 
     /**
@@ -144,14 +94,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testMul_double() {
-        System.out.println("mul");
-        double factor = 0.0;
-        AreaInSqM instance = null;
-        Area expResult = null;
-        Area result = instance.mul(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(aTenSqM,aFiveSqM.mul(TWO));
     }
 
     /**
@@ -159,14 +102,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testDiv_double() {
-        System.out.println("div");
-        double factor = 0.0;
-        AreaInSqM instance = null;
-        Area expResult = null;
-        Area result = instance.div(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(aFiveSqM,aTenSqM.div(TWO));
     }
 
     /**
@@ -174,14 +110,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testDiv_Area() {
-        System.out.println("div");
-        Area area = null;
-        AreaInSqM instance = null;
-        double expResult = 0.0;
-        double result = instance.div(area);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(TWO,aTenSqM.div(aFiveSqM),DELTA);
     }
 
     /**
@@ -189,14 +118,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testMul_Length() {
-        System.out.println("mul");
-        Length length = null;
-        AreaInSqM instance = null;
-        Volume expResult = null;
-        Volume result = instance.mul(length);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(v25CuM,aFiveSqM.mul(lFiveM));
     }
 
     /**
@@ -204,14 +126,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testDiv_Length() {
-        System.out.println("div");
-        Length length = null;
-        AreaInSqM instance = null;
-        Length expResult = null;
-        Length result = instance.div(length);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(lTwoM,aTenSqM.div(lFiveM));
     }
 
     /**
@@ -219,13 +134,8 @@ public class AreaInSqMTest {
      */
     @Test
     public void testIsZero() {
-        System.out.println("isZero");
-        AreaInSqM instance = null;
-        boolean expResult = false;
-        boolean result = instance.isZero();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(ZEROAREA.isZero());
+        assertTrue(!(aFiveSqM.isZero()));
     }
 
     /**
@@ -233,13 +143,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("isValid");
-        AreaInSqM instance = null;
-        boolean expResult = false;
-        boolean result = instance.isValid();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(aFiveSqM.isValid());
     }
 
     /**
@@ -247,14 +151,9 @@ public class AreaInSqMTest {
      */
     @Test
     public void testCompareTo() {
-        System.out.println("compareTo");
-        Area o = null;
-        AreaInSqM instance = null;
-        int expResult = 0;
-        int result = instance.compareTo(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(1,aTenSqM.compareTo(aFiveSqM));
+        assertEquals(0,aFiveSqM.compareTo(aFiveSqM));
+        assertEquals(-1,aFiveSqM.compareTo(aTenSqM));
     }
 
     /**
@@ -262,13 +161,7 @@ public class AreaInSqMTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        AreaInSqM instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(aFiveSqM.equals(aFiveSqM));
+        assertTrue(!(aFiveSqM.equals(aTenSqM)));
     }
 }

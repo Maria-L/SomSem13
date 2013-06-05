@@ -10,8 +10,8 @@ package Interfaces;
  */
 public interface AngleSpeed extends PhysicsScalar, Comparable <AngleSpeed> {
     
-    public double radS();
-    public double degS();
+    public double rads();
+    public double degs();
     
     public AngleSpeed inverse();
     public AngleSpeed add(AngleSpeed anglespeed);
