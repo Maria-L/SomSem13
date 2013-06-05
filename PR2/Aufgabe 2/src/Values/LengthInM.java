@@ -91,33 +91,33 @@ public class LengthInM implements Length {
 
     @Override
     public Area mul(Length length) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return areaInSqM(m() * length.m());
     }
 
     @Override
     public TimeDiff div(Speed speed) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return timeDiffInS(m() / speed.ms());
     }
 
     @Override
     public Speed div(TimeDiff time) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return speedInMs(m() / time.s());
     }
 
     @Override
     public Work mul(Force force) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return workInJ(m() * force.force());
     }
     
     @Override
     public Volume mul(Area area) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return volumeInCbM(m() * area.sqm());
     }
     
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return m() == 0.0;
     }
 
     @Override
@@ -127,7 +127,7 @@ public class LengthInM implements Length {
 
     @Override
     public int compareTo(Length o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return(Double.compare(o.m(), m()));
     }
 
     

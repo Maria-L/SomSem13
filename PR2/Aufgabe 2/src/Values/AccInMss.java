@@ -72,17 +72,17 @@ public class AccInMss implements Acc {
 
     @Override
     public Speed mul(TimeDiff time) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return speedInMs(this.mss() * time.s());
     }
 
     @Override
     public Force mul(Mass mass) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return forceInN(this.mss() * mass.kg());
     }
 
     @Override
     public boolean isZero() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return mss() == 0.0;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class AccInMss implements Acc {
 
     @Override
     public int compareTo(Acc o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Double.compare(o.mss(), mss());
     }
     
 }
