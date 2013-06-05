@@ -89,7 +89,7 @@ public class VolumeInCbM implements Volume {
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return cubm() >= 0.0;
     }
 
     @Override

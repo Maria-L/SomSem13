@@ -79,7 +79,7 @@ public class AngleSpeedInDegS implements AngleSpeed {
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     @Override

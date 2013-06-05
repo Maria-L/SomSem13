@@ -87,7 +87,7 @@ public class AccInMss implements Acc {
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     @Override

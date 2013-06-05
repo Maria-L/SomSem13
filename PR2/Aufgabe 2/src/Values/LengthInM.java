@@ -122,7 +122,7 @@ public class LengthInM implements Length {
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return m() >= 0.0;
     }
 
     @Override

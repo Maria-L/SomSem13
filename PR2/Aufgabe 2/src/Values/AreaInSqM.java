@@ -90,7 +90,7 @@ public class AreaInSqM implements Area {
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return sqm() >= 0.0;
     }
 
     @Override

@@ -85,7 +85,7 @@ public class ForceInN implements Force{
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     @Override

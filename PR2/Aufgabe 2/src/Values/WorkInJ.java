@@ -72,8 +72,6 @@ public class WorkInJ implements Work {
         return (j/work.j());
     }
     
-    
-
     @Override
     public Force div(Length length) {
         return forceInN(j/ length.m());

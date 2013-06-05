@@ -96,7 +96,7 @@ public class MassInKg implements Mass{
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return kg() >= 0.0;
     }
 
     @Override

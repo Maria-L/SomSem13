@@ -126,7 +126,7 @@ public class TimeDiffInS implements TimeDiff{
 
     @Override
     public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return s() >= 0.0;
     }
 
     @Override
