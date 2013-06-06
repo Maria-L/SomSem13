@@ -24,6 +24,7 @@ public interface Speed extends PhysicsScalar, Comparable <Speed> {
     public Length mul(TimeDiff time);
     public Acc div(TimeDiff time);
     public TimeDiff div(Acc acc);
+    public Force dragForce(Speed maxSpeed, Power maxPower);
      
     public String toStringInKmh();
     

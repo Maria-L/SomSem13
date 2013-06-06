@@ -125,7 +125,7 @@ public class Car extends JGObject implements Constants {
                     brakeLevel);   //brakeLevel
         }
         carlogic.myToString();
-        x = (carlogic.getPos() * GFACTOR) % PFWIDTH;
+        x = (carlogic.getPos().m() * GFACTOR) % PFWIDTH;
     }
 
     @Override

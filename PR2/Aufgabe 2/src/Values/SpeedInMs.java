@@ -85,6 +85,10 @@ public class SpeedInMs extends AbstractScalar implements Speed, Comparable <Spee
     public TimeDiff div(Acc acc) {
         return timeDiffInS(ms/acc.mss());
     }
+    
+    public Force dragForce(Speed maxSpeed, Power maxPower) {
+        return forceInN((maxPower.w() / Math.pow(maxSpeed.ms(), 3)) * this.ms() * this.ms() * -1.0) ;
+    }
 
     @Override
     public String toStringInKmh() {

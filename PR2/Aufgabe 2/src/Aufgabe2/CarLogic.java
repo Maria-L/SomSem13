@@ -15,7 +15,7 @@ public class CarLogic extends Aufgabe2 {
     private Speed speed;               //m/s
     private double level;               //-1..1
     private double brakeLevel;          //0..1
-    private double pos;                 //m
+    private Length pos;                 //m
     private boolean ABS;                //Antiblockiersystem
     private boolean ASR;                //AntiSchlupfRegelung
     private double traction = 1;        //Traktion
@@ -41,7 +41,7 @@ public class CarLogic extends Aufgabe2 {
     
     //Setzt die Zeit, die Position, die Geschwindigkeit und das Level auf einen 
     //gewünschten Wert
-    public void set(TimeDiff time, double pos, Speed speed, double level, boolean controll) {
+    public void set(TimeDiff time, Length pos, Speed speed, double level, boolean controll) {
         this.time = time;
         this.pos = pos;
         this.speed = speed;
@@ -65,7 +65,7 @@ public class CarLogic extends Aufgabe2 {
         return this.traction;
     }
 
-    public double getPos() {
+    public Length getPos() {
         return pos;
     }
     
@@ -77,7 +77,7 @@ public class CarLogic extends Aufgabe2 {
 
     //Setzt Zeit, Position, Geschwindigkeit und Level auf 0.0
     public void reset() {
-        this.set(timeDiffInS(0.0), 0.0, speedInKmH(0.0), 0.0, true);
+        this.set(timeDiffInS(0.0), lengthInM(0.0), speedInKmH(0.0), 0.0, true);
     }
 
     //Führt einen Bewegungsschritt für das Auto aus und berechnet dafür die benötigten Werte
@@ -95,7 +95,7 @@ public class CarLogic extends Aufgabe2 {
         //Diskreter  Bewegungsschritt mit alter Geschwindigkeit
         if (Math.abs(speed.ms()) > EPSILON) {
 
-            this.pos = pos + (speed.ms() * deltaTime.s());
+            this.pos = pos.add(speed.mul(deltaTime));
 
             //Neuberechnung der Faktoren nach der veränderung des Speeds im vorherigen Step
             Power powerProp = powerPropMax.mul(Math.abs(level));                        //Watt
@@ -112,15 +112,15 @@ public class CarLogic extends Aufgabe2 {
             Force forceBrakeAbs = mass.mul(ACC_EARTH.mul(brakeLevel));
             Force forceProp = forcePropAbs.mul(Math.signum(level));                     //N (kg*m^s^-2) Antriebskraft
 
-            Force dragConst = powerPropMax.div(speedInMs(Math.abs(Math.pow(speedMax.ms(),3))));      // <- todo Reibung
-            Force forceDrag = dragConst.mul((Math.pow(speed.ms(),2)*Math.signum(-speed.ms())));//N (kg*m^s^-2)
+//            Force dragConst = powerPropMax.div(speedInMs(Math.abs(Math.pow(speedMax.ms(),3))));      // <- todo Reibung
+//            Force forceDrag = dragConst.mul((Math.pow(speed.ms(),2)*Math.signum(-speed.ms())));//N (kg*m^s^-2)
 
             Force force;                                                             //Newton
             
             if (ASR) {
-                force = forceProp.mul(traction).add(forceDrag);
+                force = forceProp.mul(traction).add(speed.dragForce(speedMax, powerPropMax));
             } else {
-                force = forceProp.add(forceDrag);
+                force = forceProp.add(speed.dragForce(speedMax, powerPropMax));
             }
             
             Force forceBrake;
@@ -134,7 +134,7 @@ public class CarLogic extends Aufgabe2 {
 
             //Neue Berechnung der Geschwindigkeit für den nächsten Step
             this.speed = speed.add(acc.mul(deltaTime));                                   //m/s
-            if (this.speed.ms() < EPSILON) {this.speed = speedInMs(0);}                             //Abfangen für den Stopzustand
+            if (this.speed.compareTo(speedInMs(EPSILON))== -1)  {this.speed = speedInMs(0);}                             //Abfangen für den Stopzustand
             
             if((Math.abs(force.div(forcePropMax)) > traction || 
                     Math.abs(forceBrake.div(forcePropMax)) > traction)) {
@@ -145,7 +145,7 @@ public class CarLogic extends Aufgabe2 {
           this.time = time.add(deltaTime);                                                //Sekunde
 
     }
-     //Ein indirekter Konstruktor der von außen aufgerufen werden kann
+     //Ein indirekter Konstruktor der von außen aufgerufenwerden kann
      //ohne dass der Konstruktor selbst von außen erreichbar ist. Hiermit kann genau
      //ein vorgefertigtes Auto erzeugt werden-
 
