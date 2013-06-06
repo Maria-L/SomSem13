@@ -15,7 +15,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static Values.TestConstant.*;
 import static Values.Values.*;
-import static Values.TestConstants.*;
+import static Values.TestConstant.*;
 
 /**
  *
@@ -95,7 +95,7 @@ public class MassInKgTest {
      */
     @Test
     public void testSub() {
-        SassertEquals(mFiveKg,mTenKg.sub(mFiveKg));
+        assertEquals(mFiveKg,mTenKg.sub(mFiveKg));
     }
 
     /**
@@ -103,7 +103,7 @@ public class MassInKgTest {
      */
     @Test
     public void testMul_double() {
-        assertEquals(mTenKg,mFiveKg.mul(TWO),DELTA);
+        assertEquals(mTenKg,mFiveKg.mul(TWO));
     }
 
     /**
@@ -111,7 +111,7 @@ public class MassInKgTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(mFiveKg,mTenKg.div(TWO),DELTA);
+        assertEquals(mFiveKg,mTenKg.div(TWO));
     }
 
     /**

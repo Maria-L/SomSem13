@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static Values.Values.*;
-import static Values.TestConstants.*;
+import static Values.TestConstant.*;
 
 /**
  *
@@ -89,7 +89,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testMul_double() {
-        assertEquals(sTenMs,sTwoMs.mul(sFiveMs),DELTA);
+        assertEquals(sTenMs,sFiveMs.mul(TWO));
     }
 
     /**
@@ -97,7 +97,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(sTwoMs,sTenMs.div(sFiveMs),DELTA);
+        assertEquals(sFiveMs,sTenMs.div(TWO));
     }
 
     /**
@@ -137,7 +137,7 @@ public class SpeedInMsTest {
      */
     @Test
     public void testIsZero() {
-        assertTrue(ZERO_SPEED.isZero());
+        assertTrue(ZEROSPEED.isZero());
         assertTrue(!(sFiveMs.isZero()));
     }
 

@@ -26,30 +26,30 @@ public final class Values {
     
     
     //Einzigartige öffentliche Konstanten
-    public static final Length ZEROLENGTH = lengthInM(0.0);
-    public static final Angle ZEROANGLE = angleInRad(0.0);
-    public static final Acc ZEROACC = accInMss(0.0);
-    public static final AngleSpeed ZEROANGLESPEED = angleSpeedInDegS(0.0);
-    public static final Area ZEROAREA = areaInSqM(0.0);
-    public static final Force ZEROFORCE = forceInN(0.0);
-    public static final Mass ZEROMASS = massInKg(0.0);
-    public static final Power ZEROPOWER = powerInW(0.0);
-    public static final Speed ZEROSPEED = speedInMs(0.0);
-    public static final TimeDiff ZEROTIMEDIFF = timeDiffInS(0.0);
-    public static final Volume ZEROVOLUME = volumeInCbM(0.0);
-    public static final Work ZEROWORK = workInJ(0.0);
+    public static final Length ZEROLENGTH           = lengthInM(0.0);
+    public static final Angle ZEROANGLE             = angleInRad(0.0);
+    public static final Acc ZEROACC                 = accInMss(0.0);
+    public static final AngleSpeed ZEROANGLESPEED   = angleSpeedInDegS(0.0);
+    public static final Area ZEROAREA               = areaInSqM(0.0);
+    public static final Force ZEROFORCE             = forceInN(0.0);
+    public static final Mass ZEROMASS               = massInKg(0.0);
+    public static final Power ZEROPOWER             = powerInW(0.0);
+    public static final Speed ZEROSPEED             = speedInMs(0.0);
+    public static final TimeDiff ZEROTIMEDIFF       = timeDiffInS(0.0);
+    public static final Volume ZEROVOLUME           = volumeInCbM(0.0);
+    public static final Work ZEROWORK               = workInJ(0.0);
     
     
     //Package-Private Konversionskonstanten
     static final double FEETINMETERS        = 0.3048;
-    static final double DEGINRAD            = 2.0 * Math.PI / 360.0;
-    static final double MSINKMH             = 3.6;
-    static final double SINM                = 1/60;
-    static final double SINH                = 1/3600;
+    static final double DEGINRAD            = 1/(2.0 * Math.PI / 360.0);
+    static final double MSINKMH             = 1/3.6;
+    static final double SINM                = 60;
+    static final double SINH                = 3600;
     static final double SIND                = 86400;
     static final double SINWEEK             = 604800;
-    static final double SINMONTH            = 18144000;
-    static final double SINYEAR             = 217728000;
+    static final double SINMONTH            = 2592000;
+    static final double SINYEAR             = 31104000;
     
     //Factorymethoden - Length
     public static Length lengthInM(double meters) {
@@ -91,11 +91,11 @@ public final class Values {
     }
     
     public static Area areaInSqCm(double sqm) {
-        return AreaInSqM.valueOf(sqm * CENT);
+        return AreaInSqM.valueOf(sqm * Math.pow(CENT,2));
     }
     
     public static Area areaInSqKm(double sqm) {
-        return AreaInSqM.valueOf(sqm * KILO);
+        return AreaInSqM.valueOf(sqm * Math.pow(KILO,2));
     }
     
     //Factorymethoden - Power
@@ -159,10 +159,10 @@ public final class Values {
     }
     
     public static Volume volumeInCbCm(double cbm) {
-        return VolumeInCbM.valueOf(cbm * CENT);
+        return VolumeInCbM.valueOf(cbm * Math.pow(CENT,3);
     }
     
-    //Factorymethoden - Volumen
+    //Factorymethoden - Acceleration
     public static Acc accInMss(double mss) {
         return AccInMss.valueOf(mss);
     }

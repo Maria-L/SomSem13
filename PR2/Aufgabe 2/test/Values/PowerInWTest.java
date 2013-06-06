@@ -16,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static Values.Values.*;
-import static Values.TestConstants.*;
+import static Values.TestConstant.*;
 
 /**
  *
@@ -88,7 +88,7 @@ public class PowerInWTest {
      */
     @Test
     public void testMul_double() {
-        assertEquals(pTenW,pFiveW.mul(TWO),DELTA);
+        assertEquals(pTenW,pFiveW.mul(TWO));
     }
 
     /**
@@ -96,7 +96,7 @@ public class PowerInWTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(pFiveW,pTenW.div(TWO),DELTA);
+        assertEquals(pFiveW,pTenW.div(TWO));
     }
 
     /**
@@ -129,7 +129,7 @@ public class PowerInWTest {
      */
     @Test
     public void testIsZero() {
-        assertTrue(ZERO_POWER.isZero());
+        assertTrue(ZEROPOWER.isZero());
         assertTrue(!(pFiveW.isZero()));
     }
 

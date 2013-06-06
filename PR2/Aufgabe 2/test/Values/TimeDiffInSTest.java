@@ -17,7 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static Values.Values.*;
-import static Values.TestConstants.*;
+import static Values.TestConstant.*;
 
 /**
  *
@@ -112,7 +112,7 @@ public class TimeDiffInSTest {
      */
     @Test
     public void testYear() {
-        assertEquals(1,t365D.year(),DELTA);
+        assertEquals(1,t360D.year(),DELTA);
     }
 
     /**
@@ -144,7 +144,7 @@ public class TimeDiffInSTest {
      */
     @Test
     public void testMul_double() {
-        assertEquals(tTwoS,tOneS.mul(TWO),DELTA);
+        assertEquals(tTwoS,tOneS.mul(TWO));
     }
 
     /**
@@ -152,7 +152,7 @@ public class TimeDiffInSTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(tOneS,tTwoS.div(TWO),DELTA);
+        assertEquals(tOneS,tTwoS.div(TWO));
     }
 
     /**

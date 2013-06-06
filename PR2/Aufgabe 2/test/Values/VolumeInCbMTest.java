@@ -14,7 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static Values.Values.*;
-import static Values.TestConstants.*;
+import static Values.TestConstant.*;
 
 /**
  *
@@ -45,7 +45,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testCubcm() {
-        assertEquals(5000000,vFiveCuM.cucm(),DELTA);
+        assertEquals(5000000,vFiveCuM.cubcm(),DELTA);
     }
 
     /**
@@ -53,7 +53,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testCubm() {
-        assertEquals(5,vFiveCuM.cum(),DELTA);
+        assertEquals(5,vFiveCuM.cubm(),DELTA);
     }
 
     /**
@@ -61,7 +61,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testInverse() {
-        assertEquals(-5,vFiveCuM.inverse().cum(),DELTA);
+        assertEquals(-5,vFiveCuM.inverse().cubm(),DELTA);
     }
 
     /**
@@ -93,7 +93,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(vFiveCuM,vTenCuM.div(TWO),DELTA);
+        assertEquals(vFiveCuM,vTenCuM.div(TWO));
     }
 
     /**

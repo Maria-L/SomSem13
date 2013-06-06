@@ -20,7 +20,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static Values.TestConstants.*;
+import static Values.TestConstant.*;
 import static Values.Values.*;
 
 /**
@@ -48,13 +48,13 @@ public class ValuesTest {
     public void tearDown() throws Exception {
     }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+//    @Before
+//    public void setUp() {
+//    }
+//    
+//    @After
+//    public void tearDown() {
+//    }
 
     /**
      * Test of lengthInM method, of class Values.
@@ -110,7 +110,7 @@ public class ValuesTest {
     
     @org.junit.Test
     public void testAngleInRad() {
-        assertEquals(an180DegInRad.grad(),an180Deg.grad(),DELTA);
+        assertEquals(an180DegInRad.deg(),an180Deg.deg(),DELTA);
     }
 
     /**
@@ -118,7 +118,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testAngleInDeg() {
-        assertEquals(an180Deg.grad(),an180DegInRad.grad(),DELTA);
+        assertEquals(an180Deg.deg(),an180DegInRad.deg(),DELTA);
     } 
 
     /**
@@ -150,7 +150,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testPowerInKw() {
-        SassertEquals(pFiveThW,pFiveKw);
+        assertEquals(pFiveThW,pFiveKw);
     }
 
     /**
@@ -222,7 +222,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testTimeDiffInD() {
-        assertEquals(tOneYear,t365D);
+        assertEquals(tOneYear,t360D);
     }
 
     /**
@@ -246,15 +246,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testTimeDiffInJear() {
-        assertEquals(t365D,tOneYear);
-    }
-
-    /**
-     * Test of volumeInCbM method, of class Values.
-     */
-    @org.junit.Test
-    public void testVolumeInCbM() {
-        assertEquals(vFiveCuKm,vFiveGigaCuM);
+        assertEquals(t360D,tOneYear);
     }
 
     /**
@@ -327,7 +319,7 @@ public class ValuesTest {
     
     @org.junit.Test
     public void testAngleSpeedInDegS() {
-        assertEquals(an180Deg.grad(),an180DegInRad.grad(),DELTA);
+        assertEquals(an180Deg.deg(),an180DegInRad.deg(),DELTA);
     }
 
     /**
@@ -335,6 +327,6 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testAngleSpeedInRadS() {
-        assertEquals(ans180DegS.grads(),ans180DegS.grads(),DELTA);
+        assertEquals(ans180DegS.degs(),ans180DegS.degs(),DELTA);
     }
 }

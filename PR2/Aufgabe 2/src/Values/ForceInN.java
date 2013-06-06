@@ -35,7 +35,7 @@ public class ForceInN implements Force, Comparable <Force>{
 
     @Override
     public Force inverse() {
-        return forceInN(n);
+        return forceInN(-n);
     }
 
     @Override

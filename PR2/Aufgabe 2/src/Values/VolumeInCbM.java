@@ -28,7 +28,7 @@ public class VolumeInCbM implements Volume, Comparable <Volume> {
 
     @Override
     public double cubcm() {
-        return cbm/CENT;
+        return cbm/Math.pow(CENT,3);
     }
 
     @Override

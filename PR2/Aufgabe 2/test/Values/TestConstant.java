@@ -54,7 +54,7 @@ public class TestConstant {
     static TimeDiff tOneWeek= timeDiffInWeek(1.0);
     static TimeDiff tThirtyD= timeDiffInD(30.0);
     static TimeDiff tOneMonth= timeDiffInMonth(1.0);
-    static TimeDiff t365D= timeDiffInD(SINYEAR);
+    static TimeDiff t360D= timeDiffInD(360);
     static TimeDiff tOneYear= timeDiffInJear(1);
      
     static Speed sOneMs= speedInMs(1.0);
@@ -101,7 +101,7 @@ public class TestConstant {
      
     static Angle an180Deg= angleInDeg(180);
     static Angle an360Deg= angleInDeg(360);
-    static Angle an180DegInRad= angleInDeg(Math.PI);
+    static Angle an180DegInRad= angleInRad(Math.PI);
      
     static AngleSpeed ans180DegS= angleSpeedInDegS(180);
     static AngleSpeed ans360DegS= angleSpeedInDegS(360);

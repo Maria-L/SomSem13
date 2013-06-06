@@ -97,7 +97,7 @@ public class WorkInJTest {
      */
     @Test
     public void testDiv_double() {
-        assertEquals(wFiveJ,wTenJ.div(TWO),DELTA);
+        assertEquals(wFiveJ,wTenJ.div(TWO));
     }
 
     /**

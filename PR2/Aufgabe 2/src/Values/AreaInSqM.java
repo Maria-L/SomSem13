@@ -28,7 +28,7 @@ public class AreaInSqM implements Area, Comparable <Area> {
     // Methods
     @Override
     public double sqcm() {
-        return (sqm / CENT);
+        return (sqm / Math.pow(CENT,2));
     }
 
     @Override
@@ -38,7 +38,7 @@ public class AreaInSqM implements Area, Comparable <Area> {
 
     @Override
     public double sqkm() {
-        return (sqm / KILO);
+        return (sqm / Math.pow(KILO, 2));
     }
 
     @Override
