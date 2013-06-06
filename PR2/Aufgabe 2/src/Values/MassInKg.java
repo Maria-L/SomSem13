@@ -11,31 +11,33 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class MassInKg implements Mass, Comparable <Mass>{
-    
+public class MassInKg extends AbstractScalar implements Mass, Comparable<Mass> {
+
     private final double kg;
-    
+
     //Creation
-    private MassInKg(double kg){
+    private MassInKg(double kg) {
         this.kg = kg;
     }
-    
-    public static Mass valueOf(double kg){
+
+    public static Mass valueOf(double kg) {
         return new MassInKg(kg);
     }
-    
+
     //End Creation
-    
     //Getter
+    public double getSI() {
+        return kg();
+    }
 
     @Override
     public double mg() {
-        return kg/MICR;
+        return kg / MICR;
     }
 
     @Override
     public double g() {
-        return kg/MILI;
+        return kg / MILI;
     }
 
     @Override
@@ -45,18 +47,16 @@ public class MassInKg implements Mass, Comparable <Mass>{
 
     @Override
     public double t() {
-        return kg/KILO;
+        return kg / KILO;
     }
 
     @Override
     public Mass inverse() {
         return massInKg(-kg);
     }
-    
-    //End Getter
-    
-    //Methods
 
+    //End Getter
+    //Methods
     @Override
     public Mass add(Mass mass) {
         return massInKg(kg + mass.kg());
@@ -74,41 +74,33 @@ public class MassInKg implements Mass, Comparable <Mass>{
 
     @Override
     public Mass div(double factor) {
-       return massInKg(kg / factor);
+        return massInKg(kg / factor);
     }
 
     @Override
     public double div(Mass mass) {
         return (kg / mass.kg());
     }
-    
-    //
 
+    //
     @Override
     public Force mul(Acc acc) {
         return forceInN(kg() * acc.mss());
     }
 
     @Override
-    public boolean isZero() {
-        return kg() == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return kg() >= 0.0;
-    }
-
-    @Override
     public int compareTo(Mass o) {
-        return(Double.compare(kg(), o.kg()));
+        return (Double.compare(kg(), o.kg()));
     }
-    
+
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (!(o instanceof Mass)) return false;
-        return this.compareTo((Mass)o) == 0;
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Mass)) {
+            return false;
+        }
+        return this.compareTo((Mass) o) == 0;
     }
-    
 }

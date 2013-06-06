@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 package Aufgabe2;
+import Interfaces.*;
+import Values.*;
+import static Values.Values.*;
 
 /**
  *
@@ -15,7 +18,7 @@ public interface Constants {
     public static final int PFHIGHT = 480;
     
     //Physical Constants
-    public final double ACC_EARTH   = 9.81;
+    public final Acc ACC_EARTH      = accInMss(9.81);
     public final double KM_TO_MS    = 3.6;
     public final double W_TO_KW     = 1000;
     public final double MS_TO_S     = 1000;

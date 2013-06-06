@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class AreaInSqM implements Area, Comparable <Area> {
+public class AreaInSqM extends AbstractScalar implements Area, Comparable <Area> {
 
     private final double sqm;
 
@@ -26,6 +26,10 @@ public class AreaInSqM implements Area, Comparable <Area> {
     //End Creation
 
     // Methods
+    public double getSI() {
+        return sqm();
+    }
+    
     @Override
     public double sqcm() {
         return (sqm / Math.pow(CENT,2));
@@ -81,16 +85,6 @@ public class AreaInSqM implements Area, Comparable <Area> {
     @Override
     public Length div(Length length) {
         return lengthInM(sqm() / length.m());
-    }
-
-    @Override
-    public boolean isZero() {
-        return sqm() == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return sqm() >= 0.0;
     }
 
     @Override

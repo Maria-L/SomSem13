@@ -6,25 +6,30 @@ package Values;
 
 import Interfaces.*;
 import static Values.Values.*;
+
 /**
  *
  * @author abl128
  */
-public class AngleSpeedInDegS implements AngleSpeed, Comparable <AngleSpeed>{
-    
+public class AngleSpeedInDegS extends AbstractScalar implements AngleSpeed, Comparable<AngleSpeed> {
+
     //Creation
     private final double degS;
-    
+
     private AngleSpeedInDegS(double degS) {
         this.degS = degS;
     }
-    
+
     public static AngleSpeed valueOf(double degS) {
         return new AngleSpeedInDegS(degS);
     }
     //End Creation
-    
+
     //Getter
+    public double getSI() {
+        return degs();
+    }
+
     @Override
     public double rads() {
         return (degS / Values.DEGINRAD);
@@ -73,24 +78,18 @@ public class AngleSpeedInDegS implements AngleSpeed, Comparable <AngleSpeed>{
     }
 
     @Override
-    public boolean isZero() {
-        return degs() == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return true;
-    }
-
-    @Override
     public int compareTo(AngleSpeed o) {
-        return(Double.compare(degs(), o.degs()));
+        return (Double.compare(degs(), o.degs()));
     }
-    
+
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (!(o instanceof AngleSpeed)) return false;
-        return this.compareTo((AngleSpeed)o) == 0;
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof AngleSpeed)) {
+            return false;
+        }
+        return this.compareTo((AngleSpeed) o) == 0;
     }
 }

@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class TimeDiffInS implements TimeDiff, Comparable <TimeDiff>{
+public class TimeDiffInS extends AbstractScalar implements TimeDiff, Comparable <TimeDiff>{
     
     private final double s;
     
@@ -26,6 +26,9 @@ public class TimeDiffInS implements TimeDiff, Comparable <TimeDiff>{
     //End Creation
     
     //Methods
+    public double getSI() {
+        return s();
+    }
 
     @Override
     public double ns() {
@@ -120,16 +123,6 @@ public class TimeDiffInS implements TimeDiff, Comparable <TimeDiff>{
     }
 
     @Override
-    public boolean isZero() {
-        return s == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return s() >= 0.0;
-    }
-
-    @Override
     public int compareTo(TimeDiff o) {
         return Double.compare(s, o.s());
     }
@@ -139,5 +132,10 @@ public class TimeDiffInS implements TimeDiff, Comparable <TimeDiff>{
         if (o == this) return true;
         if (!(o instanceof TimeDiff)) return false;
         return this.compareTo((TimeDiff)o) == 0;
+    }
+    
+    @Override
+    public String toString() {
+        return ("" + s() + " sec");
     }
 }

@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class WorkInJ implements Work, Comparable <Work> {
+public class WorkInJ extends AbstractScalar implements Work, Comparable <Work> {
     
     private final double j;
     
@@ -27,6 +27,9 @@ public class WorkInJ implements Work, Comparable <Work> {
     //End Creation
     
     //Getter
+    public double getSI() {
+        return j();
+    }
 
     @Override
     public double j() {
@@ -88,16 +91,6 @@ public class WorkInJ implements Work, Comparable <Work> {
     }
 
     @Override
-    public boolean isZero() {
-        return j == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return j >= 0.0;
-    }
-
-    @Override
     public int compareTo(Work o) {
         return Double.compare(j, o.j());
     }
@@ -108,5 +101,4 @@ public class WorkInJ implements Work, Comparable <Work> {
         if (!(o instanceof Work)) return false;
         return this.compareTo((Work)o) == 0;
     }
-    
 }

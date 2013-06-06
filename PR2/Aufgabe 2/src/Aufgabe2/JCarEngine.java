@@ -2,7 +2,8 @@ package Aufgabe2;
 
 //import java.awt.*;
 //import java.awt.event.*;
-import interfaces.*;
+import Interfaces.*;
+import static Values.Values.*;
 import jgame.*;
 import jgame.platform.*;
 
@@ -13,8 +14,8 @@ import jgame.platform.*;
 public class JCarEngine extends JGEngine implements Constants {
 
     //Variables, getter and setter
-    static double frameTime;
-    static double deltaTime;
+    static TimeDiff frameTime;
+    static TimeDiff deltaTime = timeDiffInMs(10);
     static double fps;
     Car car;
 
@@ -22,7 +23,7 @@ public class JCarEngine extends JGEngine implements Constants {
 //        return frameTime;
 //    }
     
-    public static double getDeltaTime() {
+    public static TimeDiff getDeltaTime() {
         return deltaTime;
     }
 
@@ -58,9 +59,10 @@ public class JCarEngine extends JGEngine implements Constants {
         
         setBGImage("background");
         car = new Car();
-        frameTime = System.currentTimeMillis();
+        frameTime = timeDiffInMs(System.currentTimeMillis());
     }
 
+    @Override
     public void doFrame() {
 
         //Give UserInput to the car which gives it to the carlogic
@@ -80,12 +82,12 @@ public class JCarEngine extends JGEngine implements Constants {
                 0);     // object collision ID of objects to move (0 means any)
 
         //refresh time of the current frame
-        deltaTime = (System.currentTimeMillis() - frameTime) / MS_TO_S;
-        frameTime = System.currentTimeMillis();
-        fps = 1/deltaTime;
+        deltaTime = (timeDiffInMs(System.currentTimeMillis()).sub(frameTime));
+        frameTime = timeDiffInMs(System.currentTimeMillis());
     }
 
     //Calls the paint funktion of every registered object (car)
+    @Override
     public void paintFrame() {
         //Set the color of all the text displayed in the picture to white
         setColor(JGColor.white);

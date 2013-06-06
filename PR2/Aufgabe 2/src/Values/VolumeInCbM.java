@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class VolumeInCbM implements Volume, Comparable <Volume> {
+public class VolumeInCbM extends AbstractScalar implements Volume, Comparable <Volume> {
     
     private final double cbm;
     
@@ -25,6 +25,9 @@ public class VolumeInCbM implements Volume, Comparable <Volume> {
     //End Creation
     
     //Getter
+    public double getSI() {
+        return cubm();
+    }
 
     @Override
     public double cubcm() {
@@ -80,16 +83,6 @@ public class VolumeInCbM implements Volume, Comparable <Volume> {
     @Override
     public Length div(Area sqmeters) {
      return lengthInM(cbm/sqmeters.sqm());
-    }
-
-    @Override
-    public boolean isZero() {
-        return cbm == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return cubm() >= 0.0;
     }
 
     @Override

@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class ForceInN implements Force, Comparable <Force>{
+public class ForceInN extends AbstractScalar implements Force, Comparable <Force>{
 
     //Variablen
     
@@ -28,6 +28,10 @@ public class ForceInN implements Force, Comparable <Force>{
     //End Creation
     
     //Getter
+    public double getSI() {
+        return n();
+    }
+    
     @Override
     public double n() {
         return n;
@@ -79,16 +83,6 @@ public class ForceInN implements Force, Comparable <Force>{
     }
 
     @Override
-    public boolean isZero() {
-        return n() == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return true;
-    }
-
-    @Override
     public int compareTo(Force o) {
         return(Double.compare(n(), o.n()));
     }
@@ -98,5 +92,12 @@ public class ForceInN implements Force, Comparable <Force>{
         if (o == this) return true;
         if (!(o instanceof Force)) return false;
         return this.compareTo((Force)o) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.n) ^ (Double.doubleToLongBits(this.n) >>> 32));
+        return hash;
     }
 }

@@ -190,7 +190,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testTimeDiffInNs() {
-        assertEquals(tOneMs,tMsNs);
+        assertEquals(tOneMs.s(),tMsNs.s(),DELTA);
     }
 
     /**
@@ -198,7 +198,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testTimeDiffInMs() {
-        assertEquals(tThMs,tOneS);
+        assertEquals(tThMs.s(),tOneS.s(),DELTA);
     }
 
     /**
@@ -254,7 +254,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testVolumeInCbCm() {
-        assertEquals(vFiveCuM,vFiveHuThCuCm);
+        assertEquals(vFiveCuM.cubm(),vFiveHuThCuCm.cubm(),DELTA);
     }
 
     /**
@@ -266,19 +266,11 @@ public class ValuesTest {
     }
 
     /**
-     * Test of forceInN method, of class Values.
-     */
-    @org.junit.Test
-    public void testForceInN() {
-        assertEquals(fTwoKn,fTwoThN);
-    }
-
-    /**
      * Test of massInKg method, of class Values.
      */
     @org.junit.Test
     public void testMassInKg() {
-        assertEquals(mThMg.kg(),mOneKg.kg(),DELTA);
+        assertEquals(mMilMg.kg(),mOneKg.kg(),DELTA);
     }
 
     /**
@@ -310,7 +302,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testWorkInJ() {
-        assertEquals(wFiveKj,wFiveThJ);
+        assertEquals(wFiveKj.j(),wFiveThJ.j(),DELTA);
     }
 
     /**

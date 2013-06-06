@@ -31,6 +31,7 @@ public class TestConstant {
     static Mass mFiveG= massInG(5);
     static Mass mFiveThG= massInG(5000);
     static Mass mThMg = massInMg(1000);
+    static Mass mMilMg= massInMg(1000000);
     static Mass mOneKg= massInKg(1);
     static Mass mFiveKg= massInKg(5);
     static Mass mTenKg= massInKg(10.0);
@@ -70,9 +71,8 @@ public class TestConstant {
     static Force fFiveN= forceInN(5.0);
     static Force fTenN= forceInN(10.0);
     static Force fTwoThN=forceInN(2000.0);
-    static Force fTwoKn= forceInN(2.0);
      
-    static Work wFiveKj= workInJ(5);
+    static Work wFiveKj= workInKj(5);
     static Work wFiveThJ= workInJ(5000.0);
     static Work wTenJ= workInJ(10.0);
     static Work wFiveJ= workInJ(5.0);

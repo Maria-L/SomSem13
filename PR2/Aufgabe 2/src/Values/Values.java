@@ -126,7 +126,7 @@ public final class Values {
     }
     
     public static TimeDiff timeDiffInMs(double s) {
-        return TimeDiffInS.valueOf(s * MICR);
+        return TimeDiffInS.valueOf(s * MILI);
     }
     
     public static TimeDiff timeDiffInM(double s) {
@@ -192,6 +192,10 @@ public final class Values {
     //Factorymethoden - Work
     public static Work workInJ(double j) {
         return WorkInJ.valueOf(j);
+    }
+    
+    public static Work workInKj(double j) {
+        return WorkInJ.valueOf(j * KILO);
     }
     
     //Factorymethoden - AngleSpeed

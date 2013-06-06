@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class SpeedInMs implements Speed, Comparable <Speed> {
+public class SpeedInMs extends AbstractScalar implements Speed, Comparable <Speed> {
     
     private final double ms;
     
@@ -25,6 +25,9 @@ public class SpeedInMs implements Speed, Comparable <Speed> {
     //End Creation
     
     //Methods
+    public double getSI() {
+        return ms();
+    }
 
     @Override
     public double ms() {
@@ -89,16 +92,6 @@ public class SpeedInMs implements Speed, Comparable <Speed> {
     }
 
     @Override
-    public boolean isZero() {
-        return ms == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return true;
-    }
-
-    @Override
     public int compareTo(Speed o) {
         return Double.compare(ms, o.ms());
     }
@@ -108,5 +101,10 @@ public class SpeedInMs implements Speed, Comparable <Speed> {
         if (o == this) return true;
         if (!(o instanceof Speed)) return false;
         return this.compareTo((Speed)o) == 0;
+    }
+    
+    @Override
+    public String toString() {
+        return ("" + kmh() + " km/h");
     }
 }

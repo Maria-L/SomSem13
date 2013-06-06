@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class LengthInM implements Length, Comparable <Length> {
+public class LengthInM extends AbstractScalar implements Length, Comparable <Length> {
 
     //Creation
     private final double meters;
@@ -26,6 +26,10 @@ public class LengthInM implements Length, Comparable <Length> {
     //End Creation
     
     //Getter
+    public double getSI() {
+        return m();
+    }
+    
     @Override
     public double m() {
         return meters;
@@ -112,17 +116,6 @@ public class LengthInM implements Length, Comparable <Length> {
     @Override
     public Volume mul(Area area) {
         return volumeInCbM(m() * area.sqm());
-    }
-    
-
-    @Override
-    public boolean isZero() {
-        return m() == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return m() >= 0.0;
     }
 
     @Override

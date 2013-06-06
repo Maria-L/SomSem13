@@ -11,7 +11,7 @@ import static Values.Values.*;
  *
  * @author abl128
  */
-public class AccInMss implements Acc, Comparable <Acc> {
+public class AccInMss extends AbstractScalar implements Acc, Comparable <Acc> {
 
     
     //Variablen
@@ -29,6 +29,10 @@ public class AccInMss implements Acc, Comparable <Acc> {
     //End Creation
     
     //Getter
+    
+    public double getSI() {
+        return mss();
+    }
     
     @Override
     public double mss() {
@@ -81,16 +85,6 @@ public class AccInMss implements Acc, Comparable <Acc> {
     }
 
     @Override
-    public boolean isZero() {
-        return mss() == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return true;
-    }
-
-    @Override
     public int compareTo(Acc o) {
         return Double.compare(mss(), o.mss());
     }
@@ -101,5 +95,4 @@ public class AccInMss implements Acc, Comparable <Acc> {
         if (!(o instanceof Acc)) return false;
         return this.compareTo((Acc)o) == 0;
     }
-    
 }

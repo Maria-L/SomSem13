@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class AngleInDeg implements Angle, Comparable <Angle> {
+public class AngleInDeg extends AbstractScalar implements Angle, Comparable <Angle> {
     
     //Variablen
     
@@ -27,6 +27,10 @@ public class AngleInDeg implements Angle, Comparable <Angle> {
     // End Creation
     
     // Getter
+    
+    public double getSI() {
+        return deg();
+    }
 
     @Override
     public double rad() {
@@ -71,21 +75,9 @@ public class AngleInDeg implements Angle, Comparable <Angle> {
         return (this.degree / angle.deg());
     }
     
-    
-
     @Override
     public AngleSpeed div(TimeDiff time) {
         return angleSpeedInDegS(degree / time.s());
-    }
-
-    @Override
-    public boolean isZero() {
-        return deg() == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return true;
     }
 
     @Override

@@ -88,11 +88,11 @@ public class Car extends JGObject implements Constants {
     //Gets a boolean and simulates the time until the gas is pressed to max
     public void gasPressed(boolean gas) {
         if (gas && level < 1) {
-            level = level + JCarEngine.getDeltaTime();
+            level = level + JCarEngine.getDeltaTime().s();
         } else if (gas) {
             level = 1.0;
         } else if (!gas && level > 0) {
-            level = level - JCarEngine.getDeltaTime();
+            level = level - JCarEngine.getDeltaTime().s();
         } else {
             level = 0.0;
         }
@@ -101,11 +101,11 @@ public class Car extends JGObject implements Constants {
     //Gets a boolean and simulates the time until the brakes are pressed to max
     public void brakePressed(boolean brake) {
         if (brake && brakeLevel < 1) {
-            brakeLevel = brakeLevel + JCarEngine.getDeltaTime();
+            brakeLevel = brakeLevel + JCarEngine.getDeltaTime().s();
         } else if (brake) {
             brakeLevel = 1.0;
         } else if (!brake && brakeLevel > 0) {
-            brakeLevel = brakeLevel - JCarEngine.getDeltaTime();
+            brakeLevel = brakeLevel - JCarEngine.getDeltaTime().s();
         } else {
             brakeLevel = 0.0;
         }

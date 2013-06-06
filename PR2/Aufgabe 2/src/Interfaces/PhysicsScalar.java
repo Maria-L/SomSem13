@@ -12,6 +12,7 @@ public interface PhysicsScalar extends PhysicsValue {
     
     boolean isZero();
     boolean isValid();
+    double getSI();
 //    
 //    @Override
 //    public boolean equals(Object o);

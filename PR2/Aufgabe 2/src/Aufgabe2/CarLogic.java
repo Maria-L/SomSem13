@@ -1,16 +1,20 @@
 
 package Aufgabe2;
 
+import Interfaces.*;
+import static Values.Values.*;
+
+
 public class CarLogic extends Aufgabe2 {
 
     //Beginn Attribute
-    private final double mass;          //kg
-    private final double powerPropMax;  //W (
-    public final double speedMax;       //m/s
+    private final Mass mass;          //kg
+    private final Power powerPropMax;  //W (
+    public final Speed speedMax;       //m/s
+    private TimeDiff time;                //s
+    private Speed speed;               //m/s
     private double level;               //-1..1
     private double brakeLevel;          //0..1
-    private double time;                //s
-    private double speed;               //m/s
     private double pos;                 //m
     private boolean ABS;                //Antiblockiersystem
     private boolean ASR;                //AntiSchlupfRegelung
@@ -25,10 +29,10 @@ public class CarLogic extends Aufgabe2 {
     //außen nicht darauf zugegriffen werden kann.
     //
     //Auto ::= (mass, powerPropMax, speedMax) :: Double x Double x Double => Auto
-    private CarLogic(double m, double p, double s) {
+    private CarLogic(Mass m, Power p, Speed s) {
         mass = m;
-        powerPropMax = p * W_TO_KW;
-        speedMax = s / KM_TO_MS;
+        powerPropMax = p;
+        speedMax = s;
     }
 
     //Ende Konstruktoren
@@ -37,10 +41,10 @@ public class CarLogic extends Aufgabe2 {
     
     //Setzt die Zeit, die Position, die Geschwindigkeit und das Level auf einen 
     //gewünschten Wert
-    public void set(double time, double pos, double speed, double level, boolean controll) {
+    public void set(TimeDiff time, double pos, Speed speed, double level, boolean controll) {
         this.time = time;
         this.pos = pos;
-        this.speed = speed / KM_TO_MS;
+        this.speed = speed;
         this.level = level;
         this.controll = controll;
     }
@@ -73,72 +77,72 @@ public class CarLogic extends Aufgabe2 {
 
     //Setzt Zeit, Position, Geschwindigkeit und Level auf 0.0
     public void reset() {
-        this.set(0.0, 0.0, 0.0, 0.0, true);
+        this.set(timeDiffInS(0.0), 0.0, speedInKmH(0.0), 0.0, true);
     }
 
     //Führt einen Bewegungsschritt für das Auto aus und berechnet dafür die benötigten Werte
     // indem es die Maße der DeltaTime bekommt sowie den level als Angabe des Gashebels
-    public void step(double deltaTime, double level, double brakeLevel) {
+    public void step(TimeDiff deltaTime, double level, double brakeLevel) {
         
-        if (level > 0.0 && (Math.abs(this.speed) < EPSILON)) {
-            this.speed = 1;
+        if (level > 0.0 && (Math.abs(this.speed.ms()) < EPSILON)) {
+            this.speed = speedInMs(1);
         } 
 
-        if (speed == Double.NaN) {
-            speed = 0.0;
+        if (speed.ms() == Double.NaN) {
+            speed = speedInMs(0);
         }
 
         //Diskreter  Bewegungsschritt mit alter Geschwindigkeit
-        if (Math.abs(speed) > EPSILON) {
+        if (Math.abs(speed.ms()) > EPSILON) {
 
-            this.pos = pos + (speed * deltaTime);
+            this.pos = pos + (speed.ms() * deltaTime.s());
 
             //Neuberechnung der Faktoren nach der veränderung des Speeds im vorherigen Step
-            double powerProp = Math.abs(level) * powerPropMax;                        //Watt
-            double forcePropMax = mass * ACC_EARTH;                                   //N (kg*m^s^-2)
+            Power powerProp = powerPropMax.mul(Math.abs(level));                        //Watt
+            Force forcePropMax = mass.mul(ACC_EARTH);                                   //N (kg*m^s^-2)
 
-            double forcePropAbs;
+            Force forcePropAbs;
             
             if (ASR) {
-                forcePropAbs = Math.min(forcePropMax, (powerProp / (speed)));         //N (kg*m^s^-2)
+                forcePropAbs = forceInN(Math.min(forcePropMax.n(), (powerProp.div(speed)).n()));         //N (kg*m^s^-2)
             } else {                                                                  //N (kg*m^s^-2)
-                forcePropAbs = powerProp / speed;                                     //speed auf 1 setzen?!?
+                forcePropAbs = powerProp.div(speed);                                     //speed auf 1 setzen?!?
             }
             
-            double forceBrakeAbs = mass * ACC_EARTH * brakeLevel;
-            double forceProp = forcePropAbs * Math.signum(level);                     //N (kg*m^s^-2) Antriebskraft
+            Force forceBrakeAbs = mass.mul(ACC_EARTH.mul(brakeLevel));
+            Force forceProp = forcePropAbs.mul(Math.signum(level));                     //N (kg*m^s^-2) Antriebskraft
 
-            double dragConst = Math.abs(powerPropMax / (Math.pow(speedMax, 3)));      // <- todo Reibung
-            double forceDrag = dragConst * (Math.pow(speed, 2) * Math.signum(-speed));//N (kg*m^s^-2)
+            Force dragConst = powerPropMax.div(speedInMs(Math.abs(Math.pow(speedMax.ms(),3))));      // <- todo Reibung
+            Force forceDrag = dragConst.mul((Math.pow(speed.ms(),2)*Math.signum(-speed.ms())));//N (kg*m^s^-2)
 
-            double force;                                                             //Newton
+            Force force;                                                             //Newton
             
             if (ASR) {
-                force = forceProp * traction+ forceDrag;
+                force = forceProp.mul(traction).add(forceDrag);
             } else {
-                force = forceProp + forceDrag;
+                force = forceProp.add(forceDrag);
             }
             
-            double forceBrake;
+            Force forceBrake;
             if(ABS) {
-                forceBrake = forceBrakeAbs * (traction-0.01);
+                forceBrake = forceBrakeAbs.mul(traction-0.01);
             } else {
                 forceBrake = forceBrakeAbs;
             }
 
-            double acc = (force - forceBrake) / mass;                                //m/s^2     Beschleunigung = Kraft/Masse
+            Acc acc = (force.sub(forceBrake)).div(mass);                                //m/s^2     Beschleunigung = Kraft/Masse
 
             //Neue Berechnung der Geschwindigkeit für den nächsten Step
-            this.speed = speed + (acc * deltaTime);                                   //m/s
-            if (this.speed < EPSILON) {this.speed = 0.0;}                             //Abfangen für den Stopzustand
+            this.speed = speed.add(acc.mul(deltaTime));                                   //m/s
+            if (this.speed.ms() < EPSILON) {this.speed = speedInMs(0);}                             //Abfangen für den Stopzustand
             
-            if((Math.abs(force / forcePropMax) > traction || 
-                    Math.abs(forceBrake / forcePropMax) > traction)) {
+            if((Math.abs(force.div(forcePropMax)) > traction || 
+                    Math.abs(forceBrake.div(forcePropMax)) > traction)) {
                 controll = false;
             }
         }
 
-          this.time = time + deltaTime;                                                //Sekunde
+          this.time = time.add(deltaTime);                                                //Sekunde
 
     }
      //Ein indirekter Konstruktor der von außen aufgerufen werden kann
@@ -146,9 +150,9 @@ public class CarLogic extends Aufgabe2 {
      //ein vorgefertigtes Auto erzeugt werden-
 
     public static CarLogic makeAuto1() {
-        CarLogic porsche = new CarLogic(1445.0, 456.0, 330.0);
+        CarLogic porsche = new CarLogic(massInKg(1445.0), powerInKw(456.0), speedInKmH(330.0));
         //Angabe im Script von PowerPropMax ist KW, die SI-Einheit aber ist W, heißt 1 KW = 10^3W
-        porsche.set(0.0, 0.0, 0.0, 0.0, true);
+        porsche.reset();
         return porsche;
     }
 
@@ -156,8 +160,8 @@ public class CarLogic extends Aufgabe2 {
     public void myToString() {
         System.out.println("~~~~~~~~~~~");
         System.out.println("Position                : " + pos + " m");
-        System.out.println("Fahrtzeit               : " + time + " s");
-        System.out.println("Aktuelle Geschwindigkeit: " + speed + " m/s");
+        System.out.println("Fahrtzeit               : " + time.toString());
+        System.out.println("Aktuelle Geschwindigkeit: " + speed.toString());
 
     }
     //Ende Methoden

@@ -10,7 +10,7 @@ import static Values.Values.*;
  *
  * @author Mooni
  */
-public class PowerInW implements Power, Comparable <Power>{
+public class PowerInW extends AbstractScalar implements Power, Comparable <Power>{
     
     private final double w;
     
@@ -24,7 +24,10 @@ public class PowerInW implements Power, Comparable <Power>{
     }
     //End Creation
     
-    //Methods
+    //Methods#
+    public double getSI() {
+        return w();
+    }
 
     @Override
     public double w() {
@@ -79,17 +82,6 @@ public class PowerInW implements Power, Comparable <Power>{
     public Force div(Speed speed) {
         return forceInN(w/speed.ms());
     }
-    
-
-    @Override
-    public boolean isZero() {
-        return w == 0.0;
-    }
-
-    @Override
-    public boolean isValid() {
-        return true;
-    }
 
     @Override
     public int compareTo(Power o) {
@@ -102,5 +94,4 @@ public class PowerInW implements Power, Comparable <Power>{
         if (!(o instanceof Power)) return false;
         return this.compareTo((Power)o) == 0;
     }
-    
 }

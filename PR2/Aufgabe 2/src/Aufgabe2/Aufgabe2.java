@@ -21,6 +21,5 @@ public class Aufgabe2 implements Constants{
 
     public static void main(String[] args) {
         new JCarEngine(new JGPoint(PFWIDTH,PFHIGHT));
-       System.out.println("fooo"); 
     }
 }
