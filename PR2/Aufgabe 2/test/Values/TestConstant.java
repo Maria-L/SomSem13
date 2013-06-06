@@ -30,6 +30,7 @@ public class TestConstant {
     static Mass mFiveThMg= massInMg(5000);
     static Mass mFiveG= massInG(5);
     static Mass mFiveThG= massInG(5000);
+    static Mass mThMg = massInMg(1000);
     static Mass mOneKg= massInKg(1);
     static Mass mFiveKg= massInKg(5);
     static Mass mTenKg= massInKg(10.0);
@@ -37,6 +38,9 @@ public class TestConstant {
     static Mass mFiveT= massInT(5);
      
     static TimeDiff tZeroS= timeDiffInS(0.0);
+    static TimeDiff tMsNs= timeDiffInNs(1000000);
+    static TimeDiff tOneMs= timeDiffInMs(1);
+    static TimeDiff tThMs= timeDiffInMs(1000);
     static TimeDiff tOneS= timeDiffInS(1.0);
     static TimeDiff tTwoS= timeDiffInS(2.0);
     static TimeDiff tFiveS= timeDiffInS(5.0);
@@ -47,7 +51,9 @@ public class TestConstant {
     static TimeDiff t24H= timeDiffInH(24);
     static TimeDiff tOneD= timeDiffInD(1);
     static TimeDiff tSevenD= timeDiffInD(7.0);
+    static TimeDiff tOneWeek= timeDiffInWeek(1.0);
     static TimeDiff tThirtyD= timeDiffInD(30.0);
+    static TimeDiff tOneMonth= timeDiffInMonth(1.0);
     static TimeDiff t365D= timeDiffInD(SINYEAR);
     static TimeDiff tOneYear= timeDiffInJear(1);
      
@@ -107,4 +113,6 @@ public class TestConstant {
     static int TWO = 2;
      
     static double DELTA = 0.001;
+    
+    static double vaFeet = 1.524;
 }

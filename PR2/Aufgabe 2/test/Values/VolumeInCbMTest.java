@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static Values.Values.*;
+import static Values.TestConstants.*;
 
 /**
  *
@@ -38,33 +40,12 @@ public class VolumeInCbMTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of valueOf method, of class VolumeInCbM.
-     */
-    @Test
-    public void testValueOf() {
-        System.out.println("valueOf");
-        double cbm = 0.0;
-        Volume expResult = null;
-        Volume result = VolumeInCbM.valueOf(cbm);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     /**
      * Test of cubcm method, of class VolumeInCbM.
      */
     @Test
     public void testCubcm() {
-        System.out.println("cubcm");
-        VolumeInCbM instance = null;
-        double expResult = 0.0;
-        double result = instance.cubcm();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(5000000,vFiveCuM.cucm(),DELTA);
     }
 
     /**
@@ -72,13 +53,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testCubm() {
-        System.out.println("cubm");
-        VolumeInCbM instance = null;
-        double expResult = 0.0;
-        double result = instance.cubm();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(5,vFiveCuM.cum(),DELTA);
     }
 
     /**
@@ -86,13 +61,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testInverse() {
-        System.out.println("inverse");
-        VolumeInCbM instance = null;
-        Volume expResult = null;
-        Volume result = instance.inverse();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(-5,vFiveCuM.inverse().cum(),DELTA);
     }
 
     /**
@@ -100,14 +69,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
-        Volume volume = null;
-        VolumeInCbM instance = null;
-        Volume expResult = null;
-        Volume result = instance.add(volume);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(vTenCuM,vFiveCuM.add(vFiveCuM));
     }
 
     /**
@@ -115,14 +77,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testSub() {
-        System.out.println("sub");
-        Volume volume = null;
-        VolumeInCbM instance = null;
-        Volume expResult = null;
-        Volume result = instance.sub(volume);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(vFiveCuM,vTenCuM.sub(vFiveCuM));
     }
 
     /**
@@ -130,14 +85,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testMul() {
-        System.out.println("mul");
-        double factor = 0.0;
-        VolumeInCbM instance = null;
-        Volume expResult = null;
-        Volume result = instance.mul(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(vTenCuM,vFiveCuM.mul(TWO));
     }
 
     /**
@@ -145,14 +93,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testDiv_double() {
-        System.out.println("div");
-        double factor = 0.0;
-        VolumeInCbM instance = null;
-        Volume expResult = null;
-        Volume result = instance.div(factor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(vFiveCuM,vTenCuM.div(TWO),DELTA);
     }
 
     /**
@@ -160,14 +101,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testDiv_Volume() {
-        System.out.println("div");
-        Volume volume = null;
-        VolumeInCbM instance = null;
-        double expResult = 0.0;
-        double result = instance.div(volume);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(TWO,vTenCuM.div(vFiveCuM),DELTA);
     }
 
     /**
@@ -175,14 +109,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testDiv_Length() {
-        System.out.println("div");
-        Length length = null;
-        VolumeInCbM instance = null;
-        Area expResult = null;
-        Area result = instance.div(length);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(aHunSqM,vOneThCuM.div(lTenM));
     }
 
     /**
@@ -190,14 +117,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testDiv_Area() {
-        System.out.println("div");
-        Area sqmeters = null;
-        VolumeInCbM instance = null;
-        Length expResult = null;
-        Length result = instance.div(sqmeters);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(lTenM,vOneThCuM.div(aHunSqM));
     }
 
     /**
@@ -205,13 +125,8 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testIsZero() {
-        System.out.println("isZero");
-        VolumeInCbM instance = null;
-        boolean expResult = false;
-        boolean result = instance.isZero();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(vZeroCuM.isZero());
+        assertTrue(!(vFiveCuM.isZero()));
     }
 
     /**
@@ -219,13 +134,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("isValid");
-        VolumeInCbM instance = null;
-        boolean expResult = false;
-        boolean result = instance.isValid();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(vFiveCuM.isValid());
     }
 
     /**
@@ -233,14 +142,9 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testCompareTo() {
-        System.out.println("compareTo");
-        Volume o = null;
-        VolumeInCbM instance = null;
-        int expResult = 0;
-        int result = instance.compareTo(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(1,vTenCuM.compareTo(vFiveCuM));
+        assertEquals(0,vTenCuM.compareTo(vTenCuM));
+        assertEquals(-1,vTenCuM.compareTo(v25CuM));
     }
 
     /**
@@ -248,13 +152,7 @@ public class VolumeInCbMTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        VolumeInCbM instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(vTenCuM.equals(vTenCuM));
+        assertTrue(!(vTenCuM.equals(v25CuM)));
     }
 }
