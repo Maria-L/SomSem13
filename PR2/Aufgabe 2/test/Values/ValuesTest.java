@@ -278,7 +278,7 @@ public class ValuesTest {
      */
     @org.junit.Test
     public void testMassInKg() {
-        assertEquals(mThMg,mOneKg);
+        assertEquals(mThMg.kg(),mOneKg.kg(),DELTA);
     }
 
     /**

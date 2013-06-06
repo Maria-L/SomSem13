@@ -159,7 +159,7 @@ public final class Values {
     }
     
     public static Volume volumeInCbCm(double cbm) {
-        return VolumeInCbM.valueOf(cbm * Math.pow(CENT,3);
+        return VolumeInCbM.valueOf(cbm * Math.pow(CENT,3));
     }
     
     //Factorymethoden - Acceleration
