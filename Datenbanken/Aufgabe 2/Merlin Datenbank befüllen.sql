@@ -24,6 +24,7 @@ create table Benutzer
 create table Checkliste
   (VogelID              integer not null,
   BeobachtungsID        integer not null,
+  Land                  varchar2(80),
   PRIMARY KEY(VogelID,BeobachtungsID),
   FOREIGN KEY(VogelID)        references Voegel,
   FOREIGN KEY(BeobachtungsID) references Beobachtungsort
@@ -58,7 +59,7 @@ UPDATE VOEGEL
                                 from MERLIN.BIRDS_DE 
                                 where latainischer_name = MERLIN.BIRDS_DE.de_latein);
 
-/*Schiebe die deutschen Namen aus BIRDS_DE in die betreffenden Tupel aus VOEGEL, wobei nicht kopiert wird, wenn der zu kopierende Wert (null) ist*/
+/*Schiebe die deutschen Namen aus BIRDS_IOC in die betreffenden Tupel aus VOEGEL, wobei nicht kopiert wird, wenn der zu kopierende Wert (null) ist*/
 UPDATE VOEGEL
   SET VOEGEL.deutscher_name = ( select MERLIN.BIRDS_IOC.IOC_GERMAN_NAME 
                                 from MERLIN.BIRDS_IOC 
@@ -102,9 +103,15 @@ INSERT INTO CHECKLISTE
   (vogelid, beobachtungsid)
 SELECT
   vogelid, 
-  beobachtungsortid 
+  beobachtungsortid
 FROM voegel v, merlin.birds mb, beobachtungsort b where v.latainischer_name = mb.b_scientific_name 
-                                                  and b.beobachtungsort = mb.b_range ;
+                                                  and b.beobachtungsort = mb.b_range;
+
+/*Hinzufügen von 'Land-Markern' in die gesammte Checkliste um diese in Views abhängig vom Land unterteilen zu können (A11)*/
+UPDATE CHECKLISTE l
+  SET land = 'de' 
+WHERE EXISTS( SELECT * FROM Merlin.BIRDS_DE vde, VOEGEL v WHERE vde.de_latein = v.latainischer_name
+                                                          AND   v.vogelid = l.vogelid);
                                                   
 /*################################################  BEGINN TABELLEN LÖSCHEN  ############################################################*/
 

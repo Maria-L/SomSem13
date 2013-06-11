@@ -13,11 +13,6 @@ int main(int argc)
 					"Brombach      5 EUR",
 					"Zaluskowski 120 EUR",
 					"Osman        17 EUR",
-					"Hans       1254 EUR",
-					"Olaf        423 EUR",
-					"Oracle        0 EUR",
-					"Hollande     43 EUR",
-					"Merkel       42 EUR",
 					"\0\0"
 	};
 
