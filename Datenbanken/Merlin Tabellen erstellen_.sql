@@ -23,6 +23,7 @@ create table Benutzer
 create table Checkliste
   (VogelID              integer not null,
   BeobachtungsID        integer not null,
+  Land                  varchar2(50),
   PRIMARY KEY(VogelID,BeobachtungsID),
   FOREIGN KEY(VogelID)        references Voegel,
   FOREIGN KEY(BeobachtungsID) references Beobachtungsort
